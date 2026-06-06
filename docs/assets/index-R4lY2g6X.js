@@ -385,21 +385,20 @@ $$p'=qp$$
 
 现在请大家思考一下这样写的合理性，为什么 $p$在此处左乘上 $q$而不是右乘，或者说这种写法是否本身存在一些问题？
 
-没事，我们直接硬算即可，假设四元数 $q_0=(cosa,0,0,sina)
-$，$p_0=(0,\\mathbf{i},0,0)$，那么首先：（注意 $\\mathbf{i}\\mathbf{k}$相乘的运算规律）
+没事，我们直接硬算即可，假设四元数 $q_0=(cosa,0,0,sina)$，$p_0=(0,\\mathbf{i},0,0)$，那么首先：（注意 $\\mathbf{i}\\mathbf{k}$相乘的运算规律）
 
-$$qp=(cosa+\\mathbf{k}sina)\\mathbf{i}=\\mathbf{i}cosa+\\mathbf{j}sina$$
+$$qp=(cosa+\\\\mathbf{k}sina)\\\\mathbf{i}=\\mathbf{i}cosa+\\mathbf{j}sina$$
 
 这一步后先停停，我们观察后一定会觉得 $p'$不可能写作 $(0,cosa,sina,0)$，首先他们指代的空间向量的长度就已经发生了变化，同时右乘其实也解决不了这一问题，这究竟是为什么呢？
 
 对于逆的作用这一环节可不是白白铺垫的，我们不妨对 $qp$整体右乘上 $q^{-1}$，便得到：
 
-$$\\begin{align}
+$$\\begin{aligned}
        \\notag p'&=(\\mathbf{i}cosa+\\mathbf{j}sina)(cosa-\\mathbf{k}sina)   \\\\
        \\notag   &= \\mathbf{i}cos^2a-\\mathbf{i}\\mathbf{k}cosasina+\\mathbf{j}sinacosa-\\mathbf{j}\\mathbf{k}sina\\\\
        \\notag   &= \\mathbf{i}(cos^2a-sin^2a)+\\mathbf{j}(2sinacosa)\\\\
        \\notag   &= \\mathbf{i}cos2a+\\mathbf{j}sin2a
-\\end{align}$$
+\\end{aligned}$$
 
 这下 $p'$也变成了 $(0,cos2a,sin2a,0)$，其指代的空间向量长度的问题倒是解决了，整个式子也看上去显得比较合理。
 
