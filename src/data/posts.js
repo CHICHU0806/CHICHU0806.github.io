@@ -1,12 +1,12 @@
 export const posts = [
     {
-        id: 'example-post',
-        title: '文章标题',
+        id: '1',
+        title: '何为四元数&Mahony空间四元数解算',
         date: '2026-06-06',
-        category: '分类',
-        tags: ['标签一', '标签二'],
-        summary: '这里写文章摘要，用一两句话说明这篇文章主要记录了什么内容。',
-        file: 'example-post',
+        category: '数学理论推导系列教程',
+        tags: ['四元数', 'Mahony解算'],
+        summary: '这是一篇用于测试 Markdown 与 KaTeX 公式渲染的文章。',
+        file: '何为四元数&Mahony空间四元数解算',
         featured: true,
     },
 ]

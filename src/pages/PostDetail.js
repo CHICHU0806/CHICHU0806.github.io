@@ -1,6 +1,9 @@
 import { getPostById } from '../data/posts.js'
+import { renderMarkdown } from '../utils/markdown.js'
 
-const postModules = import.meta.glob('../posts/*.js', {
+const postModules = import.meta.glob('../posts/*.md', {
+    query: '?raw',
+    import: 'default',
     eager: true,
 })
 
@@ -16,8 +19,12 @@ export function PostDetail(id) {
     `
     }
 
-    const modulePath = `../posts/${post.file}.js`
-    const content = postModules[modulePath]?.default || '<p>文章内容不存在。</p>'
+    const modulePath = `../posts/${post.file}.md`
+    const markdownText = postModules[modulePath]
+
+    const content = markdownText
+        ? renderMarkdown(markdownText)
+        : '<p>文章内容不存在。</p>'
 
     const tagsHtml = post.tags
         .map((tag) => `<span>${tag}</span>`)
@@ -40,7 +47,7 @@ export function PostDetail(id) {
         </div>
       </header>
 
-      <div class="article-body">
+      <div class="article-body markdown-body">
         ${content}
       </div>
     </article>
