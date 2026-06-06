@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  border-radius: 0;
 }
 
 html {
@@ -65,7 +66,6 @@ button {
   height: 34px;
   place-items: center;
   border: 1px solid var(--color-gold);
-  border-radius: 50%;
   color: var(--color-gold);
   background: rgba(255, 255, 255, 0.72);
 }
@@ -108,10 +108,10 @@ button {
   width: 42px;
   height: 42px;
   border: 1px solid var(--color-line);
-  border-radius: 50%;
   color: var(--color-purple-deep);
   background: white;
   cursor: pointer;
+  box-shadow: 5px 5px 0 rgba(43, 18, 63, 0.12);
 }
 
 .main {
@@ -166,7 +166,7 @@ button {
   justify-content: center;
   min-height: 46px;
   padding: 0 22px;
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 14px;
   font-weight: 700;
 }
@@ -174,22 +174,23 @@ button {
 .button-primary {
   color: white;
   background: var(--color-purple-main);
-  box-shadow: 0 14px 40px rgba(109, 59, 189, 0.22);
+  box-shadow: 6px 6px 0 rgba(43, 18, 63, 0.22);
 }
 
 .button-secondary {
   border: 1px solid var(--color-purple-line);
   color: var(--color-purple-deep);
   background: rgba(255, 255, 255, 0.75);
+  box-shadow: 6px 6px 0 rgba(201, 162, 77, 0.18);
 }
 
 .hero-panel {
   position: relative;
   padding: 30px;
   border: 1px solid var(--color-purple-line);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-line);
 }
 
 .hero-panel::before {
@@ -197,8 +198,8 @@ button {
   inset: 16px;
   pointer-events: none;
   content: "";
-  border: 1px solid rgba(201, 162, 77, 0.28);
-  border-radius: 22px;
+  border: 1px solid rgba(201, 162, 77, 0.35);
+  border-radius: 0;
 }
 
 .panel-line {
@@ -274,9 +275,9 @@ button {
   height: 100%;
   padding: 26px;
   border: 1px solid var(--color-purple-line);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 18px 60px rgba(43, 18, 63, 0.05);
+  box-shadow: var(--shadow-line);
   transition:
           transform 0.2s ease,
           border-color 0.2s ease,
@@ -284,9 +285,9 @@ button {
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(201, 162, 77, 0.55);
-  box-shadow: var(--shadow-soft);
+  transform: translate(-2px, -2px);
+  border-color: rgba(201, 162, 77, 0.65);
+  box-shadow: var(--shadow-line-gold);
 }
 
 .card h3 {
@@ -322,7 +323,7 @@ button {
 .tags span {
   padding: 6px 10px;
   border: 1px solid var(--color-purple-line);
-  border-radius: 999px;
+  border-radius: 0;
   color: var(--color-purple-main);
   background: rgba(239, 227, 255, 0.45);
   font-size: 12px;
@@ -386,7 +387,8 @@ button {
 
 .article-body code {
   padding: 2px 6px;
-  border-radius: 6px;
+  border: 1px solid var(--color-purple-line);
+  border-radius: 0;
   color: var(--color-purple-deep);
   background: var(--color-purple-soft);
 }
@@ -395,9 +397,10 @@ button {
   overflow-x: auto;
   padding: 20px;
   border: 1px solid var(--color-purple-line);
-  border-radius: var(--radius-sm);
+  border-radius: 0;
   background: #21152f;
   color: #f7f2ff;
+  box-shadow: var(--shadow-line);
 }
 
 .article-body pre code {
@@ -409,10 +412,11 @@ button {
 .empty-state {
   padding: 48px;
   border: 1px dashed var(--color-purple-line);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   color: var(--color-muted);
   text-align: center;
   background: rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow-line);
 }
 
 .site-footer {
@@ -460,9 +464,9 @@ button {
     gap: 0;
     padding: 12px;
     border: 1px solid var(--color-purple-line);
-    border-radius: var(--radius-md);
+    border-radius: 0;
     background: rgba(255, 255, 255, 0.95);
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-line);
   }
 
   .nav.is-open {

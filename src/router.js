@@ -36,6 +36,11 @@ function bindMenuEvents() {
 }
 
 export function renderApp() {
+    if (window.location.hash === '#') {
+        window.location.hash = '#/'
+        return
+    }
+
     const app = document.querySelector('#app')
     const path = normalizePath(window.location.hash || '#/')
 
