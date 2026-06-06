@@ -173,34 +173,34 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
 
 我们规定，乘上同向向量视作拉伸或者缩短，如 $1 * 0.5$即缩短一半长度，$1*2$即拉伸至两倍的长度；而对于旋转，我们规定乘上一个 $ -1$视为旋转 $180$度，再次乘上 $-1$又回到原来的方向，即再次逆时针旋转 $180$度，那么有没有一种可能能够二分这一过程，让它们按照九十度九十度旋转呢？
 
-如果我们让它们在实数平面轴上进行旋转，即 $x,y$轴，那么让单位向量 $(1,0)$旋转到 $(0,1)$更多是采用矩阵乘法；而如果我们引入复数域上的向量旋转，如 $(1,0)$向 $(1，\\ii)$旋转，则使用复数乘法可以更加快捷地表示在单个面上的转动，并且可以根据右手法则确定转轴和转向，根据上面的内容我们往往可以把向量写成形如 $a + b\\ii$的形式。
+如果我们让它们在实数平面轴上进行旋转，即 $x,y$轴，那么让单位向量 $(1,0)$旋转到 $(0,1)$更多是采用矩阵乘法；而如果我们引入复数域上的向量旋转，如 $(1,0)$向 $(1，\\mathrm{i})$旋转，则使用复数乘法可以更加快捷地表示在单个面上的转动，并且可以根据右手法则确定转轴和转向，根据上面的内容我们往往可以把向量写成形如 $a + b\\mathrm{i}$的形式。
 
 ## 回顾二维复数
 
-我们知道在平面上的二维复数可以写成形如 $e^{iθ} = cosθ + isinθ$的形式，即单位圆；且二维复数在复数平面上可以视作向量进行运算。那么在此之前先让我们回顾一下二维复数 $Z=a+b\\ii$的一些基本规则：
+我们知道在平面上的二维复数可以写成形如 $e^{iθ} = cosθ + isinθ$的形式，即单位圆；且二维复数在复数平面上可以视作向量进行运算。那么在此之前先让我们回顾一下二维复数 $Z=a+b\\mathrm{i}$的一些基本规则：
 
 1. 复数 $Z
 $的共轭复数 $Z^*$为 $Z$的实数部不变，虚数部取负，即：
 
-    $$Z^*=a-b\\ii$$
+    $$Z^*=a-b\\mathrm{i}$$
 
-2. 复数 $Z$的逆即 $Z^{-1} = \\frac{1}{Z} = \\frac{1}{a+b\\ii}$，可以通过分子分母有理化写成：
+2. 复数 $Z$的逆即 $Z^{-1} = \\frac{1}{Z} = \\frac{1}{a+b\\mathrm{i}}$，可以通过分子分母有理化写成：
 
-$$\\frac{1}{a+b\\ii}*\\frac{a-b\\ii}{a-b\\ii}=\\frac{a-b\\ii}{a^2+b^2}$$
+$$\\frac{1}{a+b\\mathrm{i}}*\\frac{a-b\\mathrm{i}}{a-b\\mathrm{i}}=\\frac{a-b\\mathrm{i}}{a^2+b^2}$$
 
 即 $$Z^{-1}=\\frac{Z^*}{\\left|Z^2\\right|}$$
 
 3. 而二维复数的乘法则遵循公式：
 
-$$(a+b\\ii)*(c+d\\ii)=(ac-bd)+(ad+bc)\\ii$$
+$$(a+b\\mathrm{i})*(c+d\\mathrm{i})=(ac-bd)+(ad+bc)\\mathrm{i}$$
 
 那么根据以上内容，我们首先可以认识到：
 
-- 假设二维平面中复数向量 $U=x+y\\ii$与单位复数向量 $e^{iθ}$相乘，即：
+- 假设二维平面中复数向量 $U=x+y\\mathrm{i}$与单位复数向量 $e^{iθ}$相乘，即：
 
-$$(x+y\\ii)(cosθ+\\iisinθ)=(xcosθ-ysinθ)+(ycosθ+xsinθ)\\ii$$
+$$(x+y\\mathrm{i})(cosθ+\\mathrm{i}sinθ)=(xcosθ-ysinθ)+(ycosθ+xsinθ)\\mathrm{i}$$
 
-之前我们提到，二维向量的乘积可以视作二维平面上的旋转，如果我们将刚才这两个二维复数向量相乘视作旋转，那么旋转之后新向量 $U'(x',y'\\ii)$的坐标也会发生对应的更新：
+之前我们提到，二维向量的乘积可以视作二维平面上的旋转，如果我们将刚才这两个二维复数向量相乘视作旋转，那么旋转之后新向量 $U'(x',y'\\mathrm{i})$的坐标也会发生对应的更新：
 
 即 $$\\left\\{ 
     \\begin{array}{lc}
@@ -255,7 +255,7 @@ $$(x+y\\ii)(cosθ+\\iisinθ)=(xcosθ-ysinθ)+(ycosθ+xsinθ)\\ii$$
 
 $q=(w,x,y,z)$
 
-即 $q = w+x\\ii+y\\jj+z\\kk$
+即 $q = w+x\\mathrm{i}+y\\mathrm{j}+z\\mathrm{k}$
 
 我们定义它满足如下性质：
 
@@ -275,7 +275,7 @@ $$ij=k,jk=i,ki=j$$
 
 $$q=(w,u_x,u_y,u_z)$$
 
-$$q=w+u_x\\ii+u_y\\jj+u_z\\kk$$
+$$q=w+u_x\\mathrm{i}+u_y\\mathrm{j}+u_z\\mathrm{k}$$
 
 前面的$w$为标量，指代绕轴旋转角度；而$u$为向量，指代旋转轴；两者相互作用共同描述了一次空间中发生的旋转。这也就解释了为什么 $w$相对另外三个参数如此特殊，因为它不必进入虚数域发生向量运算。
 
@@ -292,7 +292,7 @@ $向 $y$的旋转，通过观察右手大拇指我们发现它的朝向与 $z$�
 
 在定义部分我们提出了两个问题，其中第一个问题通过刚体旋转特性与标向量差异将 $w$与 $x,y,z$分离；同时给出了第二种以向量 $u$的 $x,y,z$轴分量的书写方式，那么有没有一种可能任意向量的旋转都能够以四元数形式表示呢？
 
-这是一个非常经典的**由点到面**的过程，在本章节及以后的理论学习中都是一个经常需要强调的理念。在二维平面中，我们对单位向量的表示方式是将向量局限在一个单位圆中，从而让 $1$这个数字和三角函数紧密联系在一起，从而将单位向量表示为 $\\overrightarrow{e}=cosθ+sinθ$；而在二维复数时，我们从 $z=a+b\\ii$到扩展到一个单位向量 $e^{iθ} = cosθ + isinθ$，也是通过同样的方式完成了这一过程。
+这是一个非常经典的**由点到面**的过程，在本章节及以后的理论学习中都是一个经常需要强调的理念。在二维平面中，我们对单位向量的表示方式是将向量局限在一个单位圆中，从而让 $1$这个数字和三角函数紧密联系在一起，从而将单位向量表示为 $\\overrightarrow{e}=cosθ+sinθ$；而在二维复数时，我们从 $z=a+b\\mathrm{i}$到扩展到一个单位向量 $e^{iθ} = cosθ + isinθ$，也是通过同样的方式完成了这一过程。
 
 那么为什么我们提出要将这两者进行类比呢？
 
@@ -341,9 +341,9 @@ $$\\left\\{
 
 ### 四元数共轭及逆
 
-在回顾二维复数基本性质的时候我们提及 $Z^*=a-b\\ii$，那么如果要对四元数进行共轭操作，实际上也是对虚部的符号进行操作，即：
+在回顾二维复数基本性质的时候我们提及 $Z^*=a-b\\mathrm{i}$，那么如果要对四元数进行共轭操作，实际上也是对虚部的符号进行操作，即：
 
-$$q^*=w-x\\ii-y\\jj-z\\kk$$
+$$q^*=w-x\\mathrm{i}-y\\mathrm{j}-z\\mathrm{k}$$
 
 接着往下推，能够得到：
 
@@ -385,19 +385,19 @@ $$p'=qp$$
 
 现在请大家思考一下这样写的合理性，为什么 $p$在此处左乘上 $q$而不是右乘，或者说这种写法是否本身存在一些问题？
 
-没事，我们直接硬算即可，假设四元数 $q_0=(cosa,0,0,sina)$，$p_0=(0,\\ii,0,0)$，那么首先：（注意 $\\ii\\kk$相乘的运算规律）
+没事，我们直接硬算即可，假设四元数 $q_0=(cosa,0,0,sina)$，$p_0=(0,\\mathrm{i},0,0)$，那么首先：（注意 $\\mathrm{i}\\mathrm{k}$相乘的运算规律）
 
-$$qp=(cosa+\\\\kksina)\\\\ii=\\iicosa+\\jjsina$$
+$$qp=(cosa+\\\\mathrm{k}sina)\\\\mathrm{i}=\\mathrm{i}cosa+\\mathrm{j}sina$$
 
 这一步后先停停，我们观察后一定会觉得 $p'$不可能写作 $(0,cosa,sina,0)$，首先他们指代的空间向量的长度就已经发生了变化，同时右乘其实也解决不了这一问题，这究竟是为什么呢？
 
 对于逆的作用这一环节可不是白白铺垫的，我们不妨对 $qp$整体右乘上 $q^{-1}$，便得到：
 
 $$\\begin{aligned}
-       \\notag p'&=(\\iicosa+\\jjsina)(cosa-\\kksina)   \\\\
-       \\notag   &= \\iicos^2a-\\ii\\kkcosasina+\\jjsinacosa-\\jj\\kksina\\\\
-       \\notag   &= \\ii(cos^2a-sin^2a)+\\jj(2sinacosa)\\\\
-       \\notag   &= \\iicos2a+\\jjsin2a
+       \\notag p'&=(\\mathrm{i}cosa+\\mathrm{j}sina)(cosa-\\mathrm{k}sina)   \\\\
+       \\notag   &= \\mathrm{i}cos^2a-\\mathrm{i}\\mathrm{k}cosasina+\\mathrm{j}sinacosa-\\mathrm{j}\\mathrm{k}sina\\\\
+       \\notag   &= \\mathrm{i}(cos^2a-sin^2a)+\\mathrm{j}(2sinacosa)\\\\
+       \\notag   &= \\mathrm{i}cos2a+\\mathrm{j}sin2a
 \\end{aligned}$$
 
 这下 $p'$也变成了 $(0,cos2a,sin2a,0)$，其指代的空间向量长度的问题倒是解决了，整个式子也看上去显得比较合理。
@@ -420,7 +420,7 @@ $$\\begin{aligned}
 
 - 无论右乘 $q^{-1}$还是左乘 $q$，第一步的主要目的都是把向量 $p$“拉进”旋转坐标系。
 
-    为什么这么说？不妨计算 $pq^{-1}=\\ii(cosa-\\kksina)=\\iicosa+\\jjsina$，可以看到它和 $qp$的结果相同，那其实也不必讲究先左乘还是先右乘。但首先我们要明确的是旋转有顺序，同时四元数乘法由于复数的存在是不满足交换律的，$qpq^{-1}$的顺序写法直接决定了旋转的方向，也代表将机体系向量转到世界系；如果写作 $q^{-1}pq$不仅导致旋转方向逆置，同时也代表世界系向量转到机体系，在绝大部分情况下我们使用IMU数据进行运算的时候都优先从前者考虑。也就是说在第一步我们进行了一次旋转，并且让向量 $p$进入了一个神秘的空间。
+    为什么这么说？不妨计算 $pq^{-1}=\\mathrm{i}(cosa-\\mathrm{k}sina)=\\mathrm{i}cosa+\\mathrm{j}sina$，可以看到它和 $qp$的结果相同，那其实也不必讲究先左乘还是先右乘。但首先我们要明确的是旋转有顺序，同时四元数乘法由于复数的存在是不满足交换律的，$qpq^{-1}$的顺序写法直接决定了旋转的方向，也代表将机体系向量转到世界系；如果写作 $q^{-1}pq$不仅导致旋转方向逆置，同时也代表世界系向量转到机体系，在绝大部分情况下我们使用IMU数据进行运算的时候都优先从前者考虑。也就是说在第一步我们进行了一次旋转，并且让向量 $p$进入了一个神秘的空间。
 
 - 而第二步在旋转坐标系进行旋转的同时，还把向量映射会原坐标系。
 
@@ -436,15 +436,15 @@ $$\\begin{aligned}
 
 $$q=(cos\\frac{θ}{2},usin\\frac{θ}{2})$$
 
-且 $$u = u_x\\ii+u_y\\jj+u_z\\kk$$
+且 $$u = u_x\\mathrm{i}+u_y\\mathrm{j}+u_z\\mathrm{k}$$
 
-又纯虚四元数 $u=(0,u_x\\ii,u_y\\jj,u_z\\kk)$
+又纯虚四元数 $u=(0,u_x\\mathrm{i},u_y\\mathrm{j},u_z\\mathrm{k})$
 
 而对于 $u^2$，根据我们约定的四元数乘法运算规律，有：
 
 $$u^2=-(u_x^2+u_y^2+u_z^2)=-1$$
 
-是不是又很像 $\\ii^2=-1$？显然又是一次类比二维复数。
+是不是又很像 $\\mathrm{i}^2=-1$？显然又是一次类比二维复数。
 
 # Mahony算法又是如何构建的？
 
@@ -492,7 +492,7 @@ $$\\begin{align}
 
 现在我们不妨思考一下，这里的 $w$指代了空间角速度的向量似乎又可以看作标量为 $0$的纯虚四元数，为了表意清晰，我们用 $Ω$来指代这一纯虚四元数，也就是：
 
-$$Ω=0+w_x\\ii+w_y\\jj+w_z\\kk$$
+$$Ω=0+w_x\\mathrm{i}+w_y\\mathrm{j}+w_z\\mathrm{k}$$
 
 即 $$Ω=[0,w_x,w_y,w_z]$$
 
@@ -886,29 +886,29 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
                     please report what input caused this bug`);return e=e.slice(1,-1),{type:`verb`,mode:`text`,body:e,star:n}}Ui.hasOwnProperty(t[0])&&!O[this.mode][t[0]]&&(this.settings.strict&&this.mode===`math`&&this.settings.reportNonstrict(`unicodeTextInMathMode`,`Accented Unicode text character "`+t[0]+`" used in math mode`,e),t=Ui[t[0]]+t.slice(1));let n=Di.exec(t);n&&(t=t.substring(0,n.index),t===`i`?t=`ı`:t===`j`&&(t=`ȷ`));let i;if(O[this.mode][t]){this.settings.strict&&this.mode===`math`&&$e.includes(t)&&this.settings.reportNonstrict(`unicodeTextInMathMode`,`Latin-1/Unicode text character "`+t[0]+`" used in math mode`,e);let n=O[this.mode][t].group,r=Pr.range(e),a;a=Dn(n)?{type:`atom`,mode:this.mode,family:n,loc:r,text:t}:{type:n,mode:this.mode,loc:r,text:t},i=a}else if(t.charCodeAt(0)>=128)this.settings.strict&&(ce(t.charCodeAt(0))?this.mode===`math`&&this.settings.reportNonstrict(`unicodeTextInMathMode`,`Unicode text character "`+t[0]+`" used in math mode`,e):this.settings.reportNonstrict(`unknownSymbol`,`Unrecognized Unicode character "`+t[0]+`"`+(` (`+t.charCodeAt(0)+`)`),e)),i={type:`textord`,mode:`text`,loc:Pr.range(e),text:t};else return null;if(this.consume(),n)for(let t=0;t<n[0].length;t++){let a=n[0][t];if(!Hi[a])throw new r(`Unknown accent ' `+a+`'`,e);let o=Hi[a][this.mode]||Hi[a].text;if(!o)throw new r(`Accent `+a+` unsupported in `+this.mode+` mode`,e);i={type:`accent`,mode:this.mode,loc:Pr.range(e),label:o,isStretchy:!1,isShifty:!0,base:i}}return i}}Wi.endOfExpression=new Set([`}`,`\\endgroup`,`\\end`,`\\right`,`&`]);var Gi=function(e,t){if(!(typeof e==`string`||e instanceof String))throw TypeError(`KaTeX can only parse string typed expression`);let n=new Wi(e,t);delete n.gullet.macros.current[`\\df@tag`];let i=n.parse();if(delete n.gullet.macros.current[`\\current@color`],delete n.gullet.macros.current[`\\color`],n.gullet.macros.get(`\\df@tag`)){if(!t.displayMode)throw new r(`\\tag works only in display equations`);i=[{type:`tag`,mode:`text`,body:i,tag:n.subparse([new Fr(`\\df@tag`)])}]}return i};let Ki=function(e,t,n){t.textContent=``;let r=Xi(e,n).toNode();t.appendChild(r)};typeof document<`u`&&document.compatMode!==`CSS1Compat`&&(typeof console<`u`&&console.warn(`Warning: KaTeX doesn't work in quirks mode. Make sure your website has a suitable doctype.`),Ki=function(){throw new r(`KaTeX doesn't work in quirks mode.`)});let qi=function(e,t){return Xi(e,t).toMarkup()},Ji=function(e,t){return Gi(e,new _(t))},Yi=function(e,t,n){if(n.throwOnError||!(e instanceof r))throw e;let i=H([`katex-error`],[new E(t)]);return i.setAttribute(`title`,e.toString()),i.setAttribute(`style`,`color:`+n.errorColor),i},Xi=function(e,t){let n=new _(t);try{return _n(Gi(e,n),e,n)}catch(t){return Yi(t,e,n)}};var Zi={version:`0.16.47`,render:Ki,renderToString:qi,ParseError:r,SETTINGS_SCHEMA:p,__parse:Ji,__renderToDomTree:Xi,__renderToHTMLTree:function(e,t){let n=new _(t);try{return vn(Gi(e,n),e,n)}catch(t){return Yi(t,e,n)}},__setFontMetrics:He,__defineSymbol:k,__defineFunction:G,__defineMacro:$,__domTree:{Span:je,Anchor:Me,SymbolNode:E,SvgNode:Pe,PathNode:Fe,LineNode:Ie}};return t=t.default,t})()})})),Rr=l(o((e=>{var t=e&&e.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(e,`__esModule`,{value:!0});var n=t(Lr());function r(e,t){let n=e.src[t-1],r=e.src[t],o=e.src[t+1];if(r!==`$`)return{can_open:!1,can_close:!1};let s=!1,c=!1;return n!==`$`&&n!==`\\`&&(n===void 0||i(n)||!a(n))&&(s=!0),o!==`$`&&(o==null||i(o)||!a(o))&&(c=!0),{can_open:s,can_close:c}}function i(e){return/^\s$/u.test(e)}function a(e){return/^[\w\d]$/u.test(e)}function o(e,t){let n=e.src[t-1],r=e.src[t],i=e.src[t+1],a=e.src[t+2];return r===`$`&&n!==`$`&&n!==`\\`&&i===`$`&&a!==`$`?{can_open:!0,can_close:!0}:{can_open:!1,can_close:!1}}function s(e,t){if(e.src[e.pos]!==`$`)return!1;let n=e.tokens.at(-1);if(n?.type===`html_inline`&&/^<\w+.+[^/]>$/.test(n.content))return!1;let i=r(e,e.pos);if(!i.can_open)return t||(e.pending+=`$`),e.pos+=1,!0;let a=e.pos+1,o=a,s;for(;(o=e.src.indexOf(`$`,o))!==-1;){for(s=o-1;e.src[s]===`\\`;)--s;if((o-s)%2==1)break;o+=1}if(o===-1)return t||(e.pending+=`$`),e.pos=a,!0;if(o-a===0)return t||(e.pending+=`$$`),e.pos=a+1,!0;if(i=r(e,o),!i.can_close)return t||(e.pending+=`$`),e.pos=a,!0;if(!t){let t=e.push(`math_inline`,`math`,0);t.markup=`$`,t.content=e.src.slice(a,o)}return e.pos=o+1,!0}function c(e,t,n,r){let i=!1,a=e.bMarks[t]+e.tShift[t],o=e.eMarks[t];if(a+2>o||e.src.slice(a,a+2)!==`$$`)return!1;a+=2;let s=e.src.slice(a,o),c=[...s.matchAll(/\$\$/g)];if(c.length===1&&c[0].index===s.length-2)s=s.trim().slice(0,-2),i=!0;else if(c.length>1)return!1;if(r)return!0;let l,u,d;for(u=t;!i&&(u++,!(u>=n||(a=e.bMarks[u]+e.tShift[u],o=e.eMarks[u],a<o&&e.tShift[u]<e.blkIndent)));)e.src.slice(a,o).trim().slice(-2)===`$$`?(d=e.src.slice(0,o).lastIndexOf(`$$`),l=e.src.slice(a,d),i=!0):e.src.slice(a,o).trim().includes(`$$`)&&(d=e.src.slice(0,o).trim().indexOf(`$$`),l=e.src.slice(a,d),i=!0);e.line=u+1;let f=e.push(`math_block`,`math`,0);return f.block=!0,f.content=(s&&s.trim()?s+`
 `:``)+e.getLines(t+1,u,e.tShift[t],!0)+(l&&l.trim()?l:``),f.map=[t,e.line],f.markup=`$$`,!0}function l(e,t,n,r){let i=e.bMarks[t]+e.tShift[t],a=e.eMarks[t];if(!e.src.slice(i,a).match(/^\s*\\begin\s*\{([^{}]+)\}/))return!1;if(t>0){let n=e.bMarks[t-1]+e.tShift[t-1],r=e.eMarks[t-1],i=e.src.slice(n,r);if(!/^\s*$/.test(i))return!1}if(r)return!0;let o=[],s=t,c,l=!1;outer:for(;!l&&!(s>=n);s++){let t=e.bMarks[s]+e.tShift[s],n=e.eMarks[s];if(t<n&&e.tShift[s]<e.blkIndent)break;let r=e.src.slice(t,n);for(let i of r.matchAll(/(\\begin|\\end)\s*\{([^{}]+)\}/g))if(i[1]===`\\begin`)o.push(i[2].trim());else if(i[1]===`\\end`&&(o.pop(),!o.length)){c=e.src.slice(t,n),l=!0;break outer}}e.line=s+1;let u=e.push(`math_block`,`math`,0);return u.block=!0,u.content=(e.getLines(t,s,e.tShift[t],!0)+(c??``)).trim(),u.map=[t,e.line],u.markup=`$$`,!0}function u(e,t){var n,r,i,a,s;if(e.src.slice(e.pos,e.pos+2)!==`$$`)return!1;if(a=o(e,e.pos),!a.can_open)return t||(e.pending+=`$$`),e.pos+=2,!0;for(n=e.pos+2,r=n;(r=e.src.indexOf(`$$`,r))!==-1;){for(s=r-1;e.src[s]===`\\`;)--s;if((r-s)%2==1)break;r+=2}return r===-1?(t||(e.pending+=`$$`),e.pos=n,!0):r-n===0?(t||(e.pending+=`$$$$`),e.pos=n+2,!0):(a=o(e,r),a.can_close?(t||(i=e.push(`math_block`,`math`,0),i.block=!0,i.markup=`$$`,i.content=e.src.slice(n,r)),e.pos=r+2,!0):(t||(e.pending+=`$$`),e.pos=n,!0))}function d(e,t){let n=e.src.slice(e.pos);if(!/^\n\\begin/.test(n))return!1;if(e.pos+=1,t)return!0;let r=n.split(/\n/g).slice(1),i,a=[];outer:for(var o=0;o<r.length;++o){let e=r[o];for(let t of e.matchAll(/(\\begin|\\end)\s*\{([^{}]+)\}/g))if(t[1]===`\\begin`)a.push(t[2].trim());else if(t[1]===`\\end`&&(a.pop(),!a.length)){i=o;break outer}}if(i===void 0)return!1;let s=r.slice(0,i+1).reduce((e,t)=>e+t.length,0)+i+1,c=e.push(`math_inline_bare_block`,`math`,0);return c.block=!0,c.markup=`$$`,c.content=n.slice(1,s),e.pos+=s,!0}function f(e,t,n,r){let i=e.tokens;for(let e=i.length-1;e>=0;e--){let a=i[e],o=[];if(a.type!==`html_block`)continue;let s=a.content;for(let e of s.matchAll(r)){if(!e.groups)continue;let r=e.groups.html_before_math,i=e.groups.math,s=e.groups.html_after_math;r&&o.push({...a,type:`html_block`,map:null,content:r}),i&&o.push({...a,type:t,map:null,content:i,markup:n,block:!0,tag:`math`}),s&&o.push({...a,type:`html_block`,map:null,content:s})}o.length>0&&i.splice(e,1,...o)}return!0}function p(e){return e.replace(/&/g,`&amp;`).replace(/</g,`&lt;`).replace(/>/g,`&gt;`).replace(/"/g,`&quot;`).replace(/'/g,`&#039;`)}function m(e,t){let r=t?.katex??n.default,i=t?.enableBareBlocks,a=t?.enableMathBlockInHtml,o=t?.enableMathInlineInHtml,m=t?.enableFencedBlocks;e.inline.ruler.after(`escape`,`math_inline`,s),e.inline.ruler.after(`escape`,`math_inline_block`,u),i&&e.inline.ruler.before(`text`,`math_inline_bare_block`,d),e.block.ruler.after(`blockquote`,`math_block`,(e,t,n,r)=>i&&l(e,t,n,r)?!0:c(e,t,n,r),{alt:[`paragraph`,`reference`,`blockquote`,`list`]});let h=/(?<html_before_math>[\s\S]*?)\$\$(?<math>[\s\S]+?)\$\$(?<html_after_math>(?:(?!\$\$[\s\S]+?\$\$)[\s\S])*)/gm,g=/(?<html_before_math>[\s\S]*?)\$(?<math>.*?)\$(?<html_after_math>(?:(?!\$.*?\$)[\s\S])*)/gm;a&&e.core.ruler.push(`math_block_in_html_block`,e=>f(e,`math_block`,`$$`,h)),o&&e.core.ruler.push(`math_inline_in_html_block`,e=>f(e,`math_inline`,`$`,g));let _=e=>{let n=/\\begin\{(align|equation|gather|cd|alignat)\}/gi.test(e);try{return r.renderToString(e,{...t,displayMode:n})}catch(n){return t?.throwOnError&&console.log(n),`<span class="katex-error" title="${p(e)}">${p(n+``)}</span>`}},v=(e,t)=>{let n=e[t].content;return _(n.length>2&&n[0]==="`"&&n[n.length-1]==="`"?n.slice(1,-1):n)},y=e=>{try{return`<p class="katex-block">${r.renderToString(e,{...t,displayMode:!0})}</p>`}catch(n){return t?.throwOnError&&console.log(n),`<p class="katex-block katex-error" title="${p(e)}">${p(n+``)}</p>`}},ee=(e,t)=>y(e[t].content)+`
 `;if(e.renderer.rules.math_inline=v,e.renderer.rules.math_inline_block=ee,e.renderer.rules.math_inline_bare_block=ee,e.renderer.rules.math_block=ee,m){let t=e.renderer.rules.fence;e.renderer.rules.fence=function(e,n,r,i,a){let o=e[n];return o.info.trim().toLowerCase()===`math`&&m?y(o.content)+`
-`:t?.call(this,e,n,r,i,a)||``}}}e.default=m}))(),1),zr=new Ir({html:!0,linkify:!0,typographer:!0,breaks:!1}),Br=Rr.default.default??Rr.default;zr.use(Br,{throwOnError:!1,strict:`ignore`,macros:{"\\ii":`\\text{i}`,"\\jj":`\\text{j}`,"\\kk":`\\text{k}`}});function Vr(e=``){let t={toc:[],headingSlugMap:new Map};return{html:zr.render(e,t),toc:t.toc}}var Hr=Object.assign({"../posts/何为四元数&Mahony空间四元数解算.md":b});function Ur(e=``){return e.replaceAll(`&`,`&amp;`).replaceAll(`<`,`&lt;`).replaceAll(`>`,`&gt;`).replaceAll(`"`,`&quot;`).replaceAll(`'`,`&#039;`)}function Wr(e){let t=e.filter(e=>e.level>=2&&e.level<=4);return t.length?t.map(e=>`
+`:t?.call(this,e,n,r,i,a)||``}}}e.default=m}))(),1),zr=new Ir({html:!0,linkify:!0,typographer:!0,breaks:!1}),Br=Rr.default.default??Rr.default;zr.use(Br,{throwOnError:!1,strict:`ignore`});function Vr(e){return e.trim().toLowerCase().replace(/\s+/g,`-`).replace(/[^\p{L}\p{N}\-_]+/gu,``)||`section`}function Hr(e,t){let n=Vr(e),r=t.get(n)||0;return t.set(n,r+1),r===0?n:`${n}-${r+1}`}zr.renderer.rules.heading_open=function(e,t,n,r,i){let a=e[t],o=e[t+1],s=Number(a.tag.replace(`h`,``)),c=o?.content||``,l=Hr(c,r.headingSlugMap);return a.attrSet(`id`,l),r.toc.push({id:l,level:s,title:c}),i.renderToken(e,t,n)};function Ur(e=``){let t={toc:[],headingSlugMap:new Map};return{html:zr.render(e,t),toc:t.toc}}var Wr=Object.assign({"../posts/何为四元数&Mahony空间四元数解算.md":b});function Gr(e=``){return e.replaceAll(`&`,`&amp;`).replaceAll(`<`,`&lt;`).replaceAll(`>`,`&gt;`).replaceAll(`"`,`&quot;`).replaceAll(`'`,`&#039;`)}function Kr(e){let t=e.filter(e=>e.level>=2&&e.level<=4);return t.length?t.map(e=>`
         <button
           class="toc-link toc-level-${e.level}"
           type="button"
-          data-toc-target="${Ur(e.id)}"
+          data-toc-target="${Gr(e.id)}"
         >
-          ${Ur(e.title)}
+          ${Gr(e.title)}
         </button>
       `).join(``):`
       <div class="toc-empty">
         本文暂无目录
       </div>
-    `}function Gr(e){let t=_(e);if(!t)return`
+    `}function qr(e){let t=_(e);if(!t)return`
       <section class="empty-state">
         <p>没有找到这篇文章。</p>
         <p><a href="#/posts">返回文章列表</a></p>
       </section>
-    `;let n=Hr[`../posts/${t.file}.md`],r=n?Vr(n):{html:`<p>文章内容不存在。</p>`,toc:[]},i=t.tags.map(e=>`<span>${e}</span>`).join(``);return`
+    `;let n=Wr[`../posts/${t.file}.md`],r=n?Ur(n):{html:`<p>文章内容不存在。</p>`,toc:[]},i=t.tags.map(e=>`<span>${e}</span>`).join(``);return`
     <div class="article-layout">
       <aside class="article-toc">
         <div class="toc-title">目录</div>
         <nav class="toc-nav">
-          ${Wr(r.toc)}
+          ${Kr(r.toc)}
         </nav>
       </aside>
 
@@ -933,7 +933,7 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
         </div>
       </article>
     </div>
-  `}function Kr(){let e=v.map(ne).join(``);return`
+  `}function Jr(){let e=v.map(ne).join(``);return`
     <section class="page-title">
       <p class="eyebrow">Projects</p>
       <h1>项目</h1>
@@ -943,7 +943,7 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
     <section class="grid">
       ${v.length?e:`<div class="empty-state">暂无项目。</div>`}
     </section>
-  `}function qr(e){let t=y(e);if(!t)return`
+  `}function Yr(e){let t=y(e);if(!t)return`
       <section class="empty-state">
         <p>没有找到这个项目。</p>
         <p><a href="#/projects">返回项目列表</a></p>
@@ -969,7 +969,7 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
         ${t.detail}
       </div>
     </article>
-  `}function Jr(){return`
+  `}function Xr(){return`
     <section class="page-title">
       <p class="eyebrow">About</p>
       <h1>关于</h1>
@@ -992,9 +992,9 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
         这里写你的 GitHub、邮箱或其他链接。
       </p>
     </section>
-  `}function Yr(){return`
+  `}function Zr(){return`
     <section class="empty-state">
       <p>页面不存在。</p>
       <p><a href="#/">返回首页</a></p>
     </section>
-  `}function Xr(e){let t=e.replace(/^#/,``)||`/`;return t.length>1&&t.endsWith(`/`)?t.slice(0,-1):t}function Zr(){let e=document.querySelector(`[data-menu-button]`),t=document.querySelector(`[data-nav]`);!e||!t||(e.addEventListener(`click`,()=>{t.classList.toggle(`is-open`)}),t.querySelectorAll(`a`).forEach(e=>{e.addEventListener(`click`,()=>{t.classList.remove(`is-open`)})}))}function Qr(){document.querySelectorAll(`[data-toc-target]`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.tocTarget,n=document.getElementById(t);n&&n.scrollIntoView({behavior:`smooth`,block:`start`})})})}function $r(){if(window.location.hash===`#`){window.location.hash=`#/`;return}let e=document.querySelector(`#app`),t=Xr(window.location.hash||`#/`),n;n=t===`/`?re():t===`/posts`?ie():t.startsWith(`/posts/`)?Gr(decodeURIComponent(t.replace(`/posts/`,``))):t===`/projects`?Kr():t.startsWith(`/projects/`)?qr(decodeURIComponent(t.replace(`/projects/`,``))):t===`/about`?Jr():Yr(),e.innerHTML=h(n,t),Zr(),Qr(),window.scrollTo(0,0)}$r(),window.addEventListener(`hashchange`,$r);
+  `}function Qr(e){let t=e.replace(/^#/,``)||`/`;return t.length>1&&t.endsWith(`/`)?t.slice(0,-1):t}function $r(){let e=document.querySelector(`[data-menu-button]`),t=document.querySelector(`[data-nav]`);!e||!t||(e.addEventListener(`click`,()=>{t.classList.toggle(`is-open`)}),t.querySelectorAll(`a`).forEach(e=>{e.addEventListener(`click`,()=>{t.classList.remove(`is-open`)})}))}function ei(){document.querySelectorAll(`[data-toc-target]`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.tocTarget,n=document.getElementById(t);n&&n.scrollIntoView({behavior:`smooth`,block:`start`})})})}function ti(){if(window.location.hash===`#`){window.location.hash=`#/`;return}let e=document.querySelector(`#app`),t=Qr(window.location.hash||`#/`),n;n=t===`/`?re():t===`/posts`?ie():t.startsWith(`/posts/`)?qr(decodeURIComponent(t.replace(`/posts/`,``))):t===`/projects`?Jr():t.startsWith(`/projects/`)?Yr(decodeURIComponent(t.replace(`/projects/`,``))):t===`/about`?Xr():Zr(),e.innerHTML=h(n,t),$r(),ei(),window.scrollTo(0,0)}ti(),window.addEventListener(`hashchange`,ti);
