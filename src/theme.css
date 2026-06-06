@@ -1,0 +1,33 @@
+:root {
+    --color-bg: #fbf8ff;
+    --color-bg-soft: #f4edff;
+    --color-surface: #ffffff;
+
+    --color-purple-deep: #2b123f;
+    --color-purple-main: #6d3bbd;
+    --color-purple-soft: #efe3ff;
+    --color-purple-line: rgba(109, 59, 189, 0.18);
+
+    --color-gold: #c9a24d;
+    --color-gold-soft: #f4e6bd;
+
+    --color-black: #15121a;
+    --color-text: #2a2433;
+    --color-muted: #766d82;
+    --color-line: rgba(43, 18, 63, 0.12);
+
+    --shadow-soft: 0 24px 80px rgba(43, 18, 63, 0.08);
+
+    --radius-lg: 28px;
+    --radius-md: 20px;
+    --radius-sm: 12px;
+
+    --page-width: 1120px;
+
+    --font-main:
+            Inter,
+            "Segoe UI",
+            "Microsoft YaHei",
+            "PingFang SC",
+            sans-serif;
+}
