@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it'
-import markdownItKatex from '@vscode/markdown-it-katex'
+import texmath from 'markdown-it-texmath'
+import katex from 'katex'
 
 import 'katex/dist/katex.min.css'
 
@@ -10,20 +11,21 @@ const md = new MarkdownIt({
     breaks: false,
 })
 
-const katexPlugin = markdownItKatex.default ?? markdownItKatex
-
-md.use(katexPlugin, {
-    throwOnError: false,
-    strict: 'ignore',
+md.use(texmath, {
+    engine: katex,
+    delimiters: 'dollars',
+    katexOptions: {
+        throwOnError: false,
+        strict: 'ignore',
+    },
 })
 
 function slugify(text) {
     return text
-            .trim()
-            .toLowerCase()
-            .replace(/\s+/g, '-')
-            .replace(/[^\p{L}\p{N}\-_]+/gu, '')
-        || 'section'
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\p{L}\p{N}\-_]+/gu, '') || 'section'
 }
 
 function createUniqueSlug(text, slugMap) {
