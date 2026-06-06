@@ -35,6 +35,24 @@ function bindMenuEvents() {
     })
 }
 
+function bindTocEvents() {
+    const tocLinks = document.querySelectorAll('[data-toc-target]')
+
+    tocLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            const targetId = link.dataset.tocTarget
+            const target = document.getElementById(targetId)
+
+            if (!target) return
+
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            })
+        })
+    })
+}
+
 export function renderApp() {
     if (window.location.hash === '#') {
         window.location.hash = '#/'
@@ -66,5 +84,6 @@ export function renderApp() {
 
     app.innerHTML = MainLayout(page, path)
     bindMenuEvents()
+    bindTocEvents()
     window.scrollTo(0, 0)
 }
