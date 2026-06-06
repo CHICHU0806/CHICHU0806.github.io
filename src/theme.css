@@ -6,7 +6,7 @@
     --color-purple-deep: #2b123f;
     --color-purple-main: #6d3bbd;
     --color-purple-soft: #efe3ff;
-    --color-purple-line: rgba(109, 59, 189, 0.18);
+    --color-purple-line: rgba(109, 59, 189, 0.22);
 
     --color-gold: #c9a24d;
     --color-gold-soft: #f4e6bd;
@@ -14,13 +14,14 @@
     --color-black: #15121a;
     --color-text: #2a2433;
     --color-muted: #766d82;
-    --color-line: rgba(43, 18, 63, 0.12);
+    --color-line: rgba(43, 18, 63, 0.16);
 
-    --shadow-soft: 0 24px 80px rgba(43, 18, 63, 0.08);
+    --shadow-line: 8px 8px 0 rgba(43, 18, 63, 0.14);
+    --shadow-line-gold: 8px 8px 0 rgba(201, 162, 77, 0.22);
 
-    --radius-lg: 28px;
-    --radius-md: 20px;
-    --radius-sm: 12px;
+    --radius-lg: 0;
+    --radius-md: 0;
+    --radius-sm: 0;
 
     --page-width: 1120px;
 
