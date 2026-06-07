@@ -1,4 +1,4 @@
-var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=Object.getOwnPropertyNames,i=Object.getPrototypeOf,a=Object.prototype.hasOwnProperty,o=(e,t)=>()=>(t||(e((t={exports:{}}).exports,t),e=null),t.exports),s=(e,n)=>{let r={};for(var i in e)t(r,i,{get:e[i],enumerable:!0});return n||t(r,Symbol.toStringTag,{value:`Module`}),r},c=(e,i,o,s)=>{if(i&&typeof i==`object`||typeof i==`function`)for(var c=r(i),l=0,u=c.length,d;l<u;l++)d=c[l],!a.call(e,d)&&d!==o&&t(e,d,{get:(e=>i[e]).bind(null,d),enumerable:!(s=n(i,d))||s.enumerable});return e},l=(n,r,a)=>(a=n==null?{}:e(i(n)),c(r||!n||!n.__esModule?t(a,`default`,{value:n,enumerable:!0}):a,n));(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin===`use-credentials`?t.credentials=`include`:e.crossOrigin===`anonymous`?t.credentials=`omit`:t.credentials=`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var u={name:`YourName`,title:`Personal Blog`,subtitle:`Notes, Projects and Thoughts`,description:`这里写一句简短的个人博客介绍。`,author:`YourName`,year:new Date().getFullYear(),links:[{label:`GitHub`,href:`#`},{label:`Email`,href:`#`}]},d=[{label:`首页`,path:`/`},{label:`文章`,path:`/posts`},{label:`项目`,path:`/projects`},{label:`关于`,path:`/about`}];function f(e,t){return t===`/`?e===`/`:e===t||e.startsWith(`${t}/`)}function p(e){let t=d.map(t=>`
+var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=Object.getOwnPropertyNames,i=Object.getPrototypeOf,a=Object.prototype.hasOwnProperty,o=(e,t)=>()=>(t||(e((t={exports:{}}).exports,t),e=null),t.exports),s=(e,n)=>{let r={};for(var i in e)t(r,i,{get:e[i],enumerable:!0});return n||t(r,Symbol.toStringTag,{value:`Module`}),r},c=(e,i,o,s)=>{if(i&&typeof i==`object`||typeof i==`function`)for(var c=r(i),l=0,u=c.length,d;l<u;l++)d=c[l],!a.call(e,d)&&d!==o&&t(e,d,{get:(e=>i[e]).bind(null,d),enumerable:!(s=n(i,d))||s.enumerable});return e},l=(n,r,a)=>(a=n==null?{}:e(i(n)),c(r||!n||!n.__esModule?t(a,`default`,{value:n,enumerable:!0}):a,n));(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin===`use-credentials`?t.credentials=`include`:e.crossOrigin===`anonymous`?t.credentials=`omit`:t.credentials=`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var u={name:`CHICHU`,title:`Personal Blog`,subtitle:`Notes, Projects and Thoughts`,description:`きらきらひかる`,author:`CHICHU`,year:new Date().getFullYear(),links:[{label:`GitHub`,href:`https://github.com/CHICHU0806`},{label:`Email`,href:`mailto:2085219596@qq.com`},{label:`知乎`,href:`https://www.zhihu.com/people/16-21-89-16`}]},d=[{label:`首页`,path:`/`},{label:`文章`,path:`/posts`},{label:`项目`,path:`/projects`},{label:`关于`,path:`/about`}];function f(e,t){return t===`/`?e===`/`:e===t||e.startsWith(`${t}/`)}function p(e){let t=d.map(t=>`
         <a class="${f(e,t.path)?`is-active`:``}" href="#${t.path}">
           ${t.label}
         </a>
@@ -93,7 +93,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
     <section class="hero">
       <div>
         <p class="eyebrow">${u.subtitle}</p>
-        <h1>这里写你的主页标题</h1>
+        <h1>我觉得彳亍</h1>
         <p class="hero-text">
           ${u.description}
         </p>
@@ -107,23 +107,23 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
       <aside class="hero-panel">
         <div class="panel-line">
           <span>Current Focus</span>
-          <strong>这里写当前方向</strong>
+          <strong>机器人运动控制</strong>
         </div>
 
         <div class="panel-line">
           <span>Writing</span>
-          <strong>技术文章 / 学习笔记</strong>
+          <strong>重庆大学千里战队电控教程</strong>
         </div>
 
         <div class="panel-line">
           <span>Projects</span>
-          <strong>项目实践 / 作品展示</strong>
+          <strong>一些正在做或者未来打算做的东西</strong>
         </div>
       </aside>
     </section>
 
     <section class="section">
-      ${b({eyebrow:`Latest Posts`,title:`最近文章`,description:`这里展示最新发布的文章。`})}
+      ${b({eyebrow:`Latest Posts`,title:`最近文章`,description:`潦草写就，有错请纠。`})}
 
       <div class="grid grid-three">
         ${e.length?e.map(ee).join(``):`<div class="empty-state">暂无文章。</div>`}
@@ -131,7 +131,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
     </section>
 
     <section class="section">
-      ${b({eyebrow:`Featured Projects`,title:`精选项目`,description:`这里展示你希望重点呈现的项目。`})}
+      ${b({eyebrow:`Featured Projects`,title:`精选项目`,description:`展示一些我觉得还不错的项目，欢迎交流和讨论。`})}
 
       <div class="grid">
         ${t.length?t.map(x).join(``):`<div class="empty-state">暂无项目。</div>`}

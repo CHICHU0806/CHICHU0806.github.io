@@ -1,18 +1,22 @@
 export const site = {
-    name: 'YourName',
+    name: 'CHICHU',
     title: 'Personal Blog',
     subtitle: 'Notes, Projects and Thoughts',
-    description: '这里写一句简短的个人博客介绍。',
-    author: 'YourName',
+    description: 'きらきらひかる',
+    author: 'CHICHU',
     year: new Date().getFullYear(),
     links: [
         {
             label: 'GitHub',
-            href: '#',
+            href: 'https://github.com/CHICHU0806',
         },
         {
             label: 'Email',
-            href: '#',
+            href: 'mailto:2085219596@qq.com',
         },
+        {
+            label: '知乎',
+            href: 'https://www.zhihu.com/people/16-21-89-16',
+        }
     ],
 }

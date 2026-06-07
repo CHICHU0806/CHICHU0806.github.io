@@ -19,7 +19,7 @@ export function Home() {
     <section class="hero">
       <div>
         <p class="eyebrow">${site.subtitle}</p>
-        <h1>这里写你的主页标题</h1>
+        <h1>我觉得彳亍</h1>
         <p class="hero-text">
           ${site.description}
         </p>
@@ -33,17 +33,17 @@ export function Home() {
       <aside class="hero-panel">
         <div class="panel-line">
           <span>Current Focus</span>
-          <strong>这里写当前方向</strong>
+          <strong>机器人运动控制</strong>
         </div>
 
         <div class="panel-line">
           <span>Writing</span>
-          <strong>技术文章 / 学习笔记</strong>
+          <strong>重庆大学千里战队电控教程</strong>
         </div>
 
         <div class="panel-line">
           <span>Projects</span>
-          <strong>项目实践 / 作品展示</strong>
+          <strong>一些正在做或者未来打算做的东西</strong>
         </div>
       </aside>
     </section>
@@ -52,7 +52,7 @@ export function Home() {
       ${SectionTitle({
         eyebrow: 'Latest Posts',
         title: '最近文章',
-        description: '这里展示最新发布的文章。'
+        description: '潦草写就，有错请纠。'
     })}
 
       <div class="grid grid-three">
@@ -68,7 +68,7 @@ export function Home() {
       ${SectionTitle({
         eyebrow: 'Featured Projects',
         title: '精选项目',
-        description: '这里展示你希望重点呈现的项目。'
+        description: '展示一些我觉得还不错的项目，欢迎交流和讨论。'
     })}
 
       <div class="grid">
