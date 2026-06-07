@@ -15,8 +15,12 @@ export const site = {
             href: 'mailto:2085219596@qq.com',
         },
         {
+            label: 'BiliBili',
+            href: 'https://www.zhihu.com/people/16-21-89-16',
+        },
+        {
             label: '知乎',
             href: 'https://www.zhihu.com/people/16-21-89-16',
-        }
+        },
     ],
 }
