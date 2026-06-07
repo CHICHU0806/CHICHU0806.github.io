@@ -3,8 +3,11 @@ import { site } from '../data/site.js'
 export function Footer() {
     const linksHtml = site.links
         .map((link) => {
+            const isExternal = link.href.startsWith('http')
+            const target = isExternal ? 'target="_blank" rel="noreferrer"' : ''
+
             return `
-        <a href="${link.href}" target="_blank" rel="noreferrer">
+        <a href="${link.href}" ${target}>
           ${link.label}
         </a>
       `

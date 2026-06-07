@@ -19,11 +19,11 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
         </button>
       </div>
     </header>
-  `}function m(){let e=u.links.map(e=>`
-        <a href="${e.href}" target="_blank" rel="noreferrer">
+  `}function m(){let e=u.links.map(e=>{let t=e.href.startsWith(`http`)?`target="_blank" rel="noreferrer"`:``;return`
+        <a href="${e.href}" ${t}>
           ${e.label}
         </a>
-      `).join(``);return`
+      `}).join(``);return`
     <footer class="site-footer">
       <div class="container footer-inner">
         <p>© ${u.year} ${u.author}. All rights reserved.</p>
