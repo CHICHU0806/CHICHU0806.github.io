@@ -45,7 +45,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
 
       ${m()}
     </div>
-  `}var g=[{id:`3-1`,title:`何为四元数&Mahony空间四元数解算`,date:`2026-06-06`,category:`数学理论推导系列教程`,tags:[`四元数`,`Mahony解算`],summary:`本文对四元数的定义、性质以及在空间解算中的应用进行详细介绍，并通过Mahony解算方法展示其实际应用。`,file:`何为四元数&Mahony空间四元数解算`,featured:!0,featuredOrder:1},{id:`3-2`,title:`卡尔曼滤波（KF）的基础理论推导`,date:`2026-06-07`,category:`数学理论推导系列教程`,tags:[`卡尔曼滤波`,`KF`],summary:`本文对卡尔曼滤波从一阶向二阶在特定环境下进行了初步的推导，并且为后面向EKF的拓展埋下伏笔。`,file:`卡尔曼滤波（KF）的基础理论推导`,featured:!0,featuredOrder:2}];function _(e){return g.find(t=>t.id===e)}function v(e){return e.map(e=>_(e)).filter(Boolean)}function y(){return[...g].sort((e,t)=>new Date(t.date)-new Date(e.date))}function b(){return g.filter(e=>e.featured).sort((e,t)=>(e.featuredOrder??999)-(t.featuredOrder??999))}var ee=[{id:`example-project`,title:`项目名称`,date:`2026`,category:`项目分类`,tags:[`标签一`,`标签二`],summary:`这里写项目简介，用几句话说明项目背景、目标和主要内容。`,detail:`
+  `}var g=[{id:`3-1`,title:`何为四元数&Mahony空间四元数解算`,date:`2026-06-06`,category:`数学理论推导系列教程`,tags:[`四元数`,`Mahony解算`],summary:`本文对四元数的定义、性质以及在空间解算中的应用进行详细介绍，并通过Mahony解算方法展示其实际应用。`,file:`何为四元数&Mahony空间四元数解算`,featured:!1,featuredOrder:0},{id:`3-2`,title:`卡尔曼滤波（KF）的基础理论推导`,date:`2026-06-07`,category:`数学理论推导系列教程`,tags:[`卡尔曼滤波`,`KF`],summary:`本文对卡尔曼滤波从一阶向二阶在特定环境下进行了初步的推导，并且为后面向EKF的拓展埋下伏笔。`,file:`卡尔曼滤波（KF）的基础理论推导`,featured:!1,featuredOrder:0}];function _(e){return g.find(t=>t.id===e)}function v(e){return e.map(e=>_(e)).filter(Boolean)}function y(){return[...g].sort((e,t)=>new Date(t.date)-new Date(e.date))}function b(){return g.filter(e=>e.featured).sort((e,t)=>(e.featuredOrder??999)-(t.featuredOrder??999))}var ee=[{id:`example-project`,title:`项目名称`,date:`2026`,category:`项目分类`,tags:[`标签一`,`标签二`],summary:`这里写项目简介，用几句话说明项目背景、目标和主要内容。`,detail:`
       <p>这里是项目详情内容。</p>
       <p>你可以写项目背景、技术方案、实现过程、遇到的问题和最终结果。</p>
     `,featured:!0}];function x(e){return ee.find(t=>t.id===e)}function te({eyebrow:e,title:t,description:n=``}){return`
@@ -137,7 +137,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
         ${t.length?t.map(re).join(``):`<div class="empty-state">暂无项目。</div>`}
       </div>
     </section>
-  `}var ie=[{id:`math-theory`,title:`数学理论推导系列教程`,description:`整理四元数、卡尔曼滤波、姿态解算、滤波算法等数学理论推导内容。`,open:!0,posts:[`3-1`,`3-2`]},{id:`f4-tutorial`,title:`F4教程`,description:`整理STM32F4、FreeRTOS、CAN通信、IMU、底盘与云台控制相关内容。`,open:!1,posts:[]},{id:`h7-tutorial`,title:`H7教程`,description:`整理STM32H7、FDCAN、高性能外设和工程配置相关内容。`,open:!1,posts:[]}];function ae(e,t=`暂无文章。`){return e.length?`
+  `}var ie=[{id:`f4-tutorial`,title:`F407开发板系列教程`,description:`整理STM32F407在RoboMaster赛事中的一些基本使用流程。`,open:!1,posts:[]},{id:`h7-tutorial`,title:`H7教程`,description:`整理STM32H732在RoboMaster赛事中的一些基本使用流程。`,open:!1,posts:[]},{id:`math-theory`,title:`数学理论推导系列教程`,description:`整理四元数、卡尔曼滤波、姿态解算、滤波算法等数学理论推导内容。`,open:!0,posts:[`3-1`,`3-2`]}];function ae(e,t=`暂无文章。`){return e.length?`
     <div class="grid grid-three">
       ${e.map(ne).join(``)}
     </div>
