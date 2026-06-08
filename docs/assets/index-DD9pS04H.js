@@ -45,7 +45,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
 
       ${m()}
     </div>
-  `}var g=[{id:`3-1`,title:`quaternion-mahony`,date:`2026-06-06`,category:`数学理论推导系列教程`,tags:[`四元数`,`Mahony解算`],summary:`本文对四元数的定义、性质以及在空间解算中的应用进行详细介绍，并通过Mahony解算方法展示其实际应用。`,file:`quaternion-mahony`,featured:!1,featuredOrder:0},{id:`3-2`,title:`卡尔曼滤波（KF）的基础理论推导`,date:`2026-06-07`,category:`数学理论推导系列教程`,tags:[`卡尔曼滤波`,`KF`],summary:`本文对卡尔曼滤波从一阶向二阶在特定环境下进行了初步的推导，并且为后面向EKF的拓展埋下伏笔。`,file:`卡尔曼滤波（KF）的基础理论推导`,featured:!1,featuredOrder:0}];function _(e){return g.find(t=>t.id===e)}function v(e){return e.map(e=>_(e)).filter(Boolean)}function y(){return[...g].sort((e,t)=>new Date(t.date)-new Date(e.date))}function b(){return g.filter(e=>e.featured).sort((e,t)=>(e.featuredOrder??999)-(t.featuredOrder??999))}var ee=[{id:`example-project`,title:`项目名称`,date:`2026`,category:`项目分类`,tags:[`标签一`,`标签二`],summary:`这里写项目简介，用几句话说明项目背景、目标和主要内容。`,detail:`
+  `}var g=[{id:`3-1`,title:`何为四元数&Mahony空间四元数解算`,date:`2026-06-06`,category:`数学理论推导系列教程`,tags:[`四元数`,`Mahony解算`],summary:`本文对四元数的定义、性质以及在空间解算中的应用进行详细介绍，并通过Mahony解算方法展示其实际应用。`,file:`何为四元数&Mahony空间四元数解算`,featured:!1,featuredOrder:0},{id:`3-2`,title:`卡尔曼滤波（KF）的基础理论推导`,date:`2026-06-07`,category:`数学理论推导系列教程`,tags:[`卡尔曼滤波`,`KF`],summary:`本文对卡尔曼滤波从一阶向二阶在特定环境下进行了初步的推导，并且为后面向EKF的拓展埋下伏笔。`,file:`卡尔曼滤波（KF）的基础理论推导`,featured:!1,featuredOrder:0}];function _(e){return g.find(t=>t.id===e)}function v(e){return e.map(e=>_(e)).filter(Boolean)}function y(){return[...g].sort((e,t)=>new Date(t.date)-new Date(e.date))}function b(){return g.filter(e=>e.featured).sort((e,t)=>(e.featuredOrder??999)-(t.featuredOrder??999))}var ee=[{id:`example-project`,title:`项目名称`,date:`2026`,category:`项目分类`,tags:[`标签一`,`标签二`],summary:`这里写项目简介，用几句话说明项目背景、目标和主要内容。`,detail:`
       <p>这里是项目详情内容。</p>
       <p>你可以写项目背景、技术方案、实现过程、遇到的问题和最终结果。</p>
     `,featured:!0}];function x(e){return ee.find(t=>t.id===e)}function te({eyebrow:e,title:t,description:n=``}){return`
@@ -357,7 +357,7 @@ $$q=w+u_x\\mathbf{i}+u_y\\mathbf{j}+u_z\\mathbf{k}$$
 
 现在来看第二个问题，这个其实相对比较容易解释，用于描述向量的三个参数 $x,y,z$分别对应虚数 $i,j,k$，直接看图：
 
-![X，Y，Z三轴之间的旋转传递顺序](/public/images/posts/quaternion-mahony/image3.jpg)
+![X，Y，Z三轴之间的旋转传递顺序](/public/images/posts/何为四元数&Mahony空间四元数解算/image3.jpg)
 
 一言以蔽之，右手定则。$ij$同样可以视作由 $x$向 $y$的旋转，通过观察右手大拇指我们发现它的朝向与 $z$轴正方向重合，而 $jk$， $ki$同理，这也就对应了三维空间中 $x→y→z$的旋转顺序，同样也解释了为什么逆向旋转时需要给结果取负号，本质就是旋转轴的朝向发生了反转。
 
