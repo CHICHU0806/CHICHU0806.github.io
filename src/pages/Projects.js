@@ -11,7 +11,7 @@ export function Projects() {
     <section class="page-title">
       <p class="eyebrow">Projects</p>
       <h1>项目</h1>
-      <p>这里展示你的项目实践、作品记录和阶段性成果。</p>
+      <p>展示一些我觉得还不错的项目，欢迎交流和讨论。</p>
     </section>
 
     <section class="grid">

@@ -10,7 +10,7 @@ export function Posts() {
     <section class="page-title">
       <p class="eyebrow">Posts</p>
       <h1>文章</h1>
-      <p>这里集中展示你的技术文章、学习笔记和长期记录。</p>
+      <p>潦草写就，有错请纠。</p>
     </section>
 
     <section class="grid grid-three">
