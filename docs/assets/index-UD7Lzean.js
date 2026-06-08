@@ -315,9 +315,9 @@ $$(x+y\\mathbf{i})(\\cos θ+\\mathbf{i}\\sin θ)=(x\\cos θ-y\\sin θ)+(y\\cos �
 
 首先回到二维平面中，假设二维平面 $xOy$中发生了向量的旋转，无论顺时针还是逆时针转动，旋转轴永远垂直于平面 $xOy$，该旋转轴与平面 $xOy$的交点也就是发生旋转的原向量 $U$的起点，因此在二维平面中我们永远不用担心旋转轴在哪的问题。
 
-![二维平面中旋转轴与旋转平面的关系](/CHICHU.github.io/images/posts/何为四元数&Mahony空间四元数解算/image1.jpg)
+![二维平面中旋转轴与旋转平面的关系](/public/images/posts/何为四元数&Mahony空间四元数解算/image1.jpg)
 
-![三维空间中从向量 U 转动到 U' 的可能旋转方式](/CHICHU.github.io/images/posts/何为四元数&Mahony空间四元数解算/image2.jpg)
+![三维空间中从向量 U 转动到 U' 的可能旋转方式](/public/images/posts/何为四元数&Mahony空间四元数解算/image2.jpg)
 
 而进入三维空间，仍然是任意向量 $U$转动到 $U'$，但是旋转轴的状态在此时发生了一些变化，如右上图所示，这是从 $U$到 $U'$的一种可能的转动方式；同理，空间中也就衍生出了无数种从 $U$到 $U'$的转动方式，那么我们就回到了第一个问题，应该怎么确定一次旋转变化中的旋转轴呢？
 
@@ -357,7 +357,7 @@ $$q=w+u_x\\mathbf{i}+u_y\\mathbf{j}+u_z\\mathbf{k}$$
 
 现在来看第二个问题，这个其实相对比较容易解释，用于描述向量的三个参数 $x,y,z$分别对应虚数 $i,j,k$，直接看图：
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YjhkYjMyYzYwZmYyMDg1ZDUyNzA0MDY4YWU0NTNhNWVfNjVmODY1NzRhZmZkNmYzZDI0MGZkY2Y4ZDAzNTUzMzJfSUQ6NzYyMjc3OTYyMTc3NjA2NzUzN18xNzgwNzQ5Nzk3OjE3ODA4MzYxOTdfVjM)
+![X，Y，Z三轴之间的旋转传递顺序](/public/images/posts/何为四元数&Mahony空间四元数解算/image3.jpg)
 
 一言以蔽之，右手定则。$ij$同样可以视作由 $x$向 $y$的旋转，通过观察右手大拇指我们发现它的朝向与 $z$轴正方向重合，而 $jk$， $ki$同理，这也就对应了三维空间中 $x→y→z$的旋转顺序，同样也解释了为什么逆向旋转时需要给结果取负号，本质就是旋转轴的朝向发生了反转。
 

@@ -131,7 +131,7 @@ $$q=w+u_x\mathbf{i}+u_y\mathbf{j}+u_z\mathbf{k}$$
 
 现在来看第二个问题，这个其实相对比较容易解释，用于描述向量的三个参数 $x,y,z$分别对应虚数 $i,j,k$，直接看图：
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YjhkYjMyYzYwZmYyMDg1ZDUyNzA0MDY4YWU0NTNhNWVfNjVmODY1NzRhZmZkNmYzZDI0MGZkY2Y4ZDAzNTUzMzJfSUQ6NzYyMjc3OTYyMTc3NjA2NzUzN18xNzgwNzQ5Nzk3OjE3ODA4MzYxOTdfVjM)
+![X，Y，Z三轴之间的旋转传递顺序](/public/images/posts/何为四元数&Mahony空间四元数解算/image3.jpg)
 
 一言以蔽之，右手定则。$ij$同样可以视作由 $x$向 $y$的旋转，通过观察右手大拇指我们发现它的朝向与 $z$轴正方向重合，而 $jk$， $ki$同理，这也就对应了三维空间中 $x→y→z$的旋转顺序，同样也解释了为什么逆向旋转时需要给结果取负号，本质就是旋转轴的朝向发生了反转。
 
