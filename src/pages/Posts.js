@@ -87,7 +87,7 @@ export function Posts() {
         </div>
 
         <div class="section-desc">
-          这里展示你希望优先推荐给读者的文章。
+          读前必看，确定共识。
         </div>
       </div>
 
