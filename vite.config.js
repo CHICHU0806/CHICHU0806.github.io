@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-    base: '/CHICHU.github.io/',
+    base: '/',
     build: {
         outDir: 'docs',
         emptyOutDir: true
