@@ -1,12 +1,12 @@
 export const posts = [
     {
         id: '3-1',
-        title: '何为四元数&Mahony空间四元数解算',
+        title: 'quaternion-mahony',
         date: '2026-06-06',
         category: '数学理论推导系列教程',
         tags: ['四元数', 'Mahony解算'],
         summary: '本文对四元数的定义、性质以及在空间解算中的应用进行详细介绍，并通过Mahony解算方法展示其实际应用。',
-        file: '何为四元数&Mahony空间四元数解算',
+        file: 'quaternion-mahony',
         featured: false,
         featuredOrder: 0,
     },
