@@ -329,9 +329,9 @@ $$(x+y\\mathbf{i})(\\cos θ+\\mathbf{i}\\sin θ)=(x\\cos θ-y\\sin θ)+(y\\cos �
 
 设空间中四元数：
 
-$q=(w,x,y,z)$
+$$q=(w,x,y,z)$$
 
-即 $q = w+x\\mathbf{i}+y\\mathbf{j}+z\\mathbf{k}$
+即 $$q = w+x\\mathbf{i}+y\\mathbf{j}+z\\mathbf{k}$$
 
 我们定义它满足如下性质：
 
