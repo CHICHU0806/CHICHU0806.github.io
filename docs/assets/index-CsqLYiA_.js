@@ -224,7 +224,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
         ${se()}
       </div>
     </section>
-  `}var le=`# 何为四元数\\&Mahony空间四元数解算
+  `}var le=`# 何为四元数&Mahony空间四元数解算
 
 2026\\.3\\.2\\-\\-1157
 
