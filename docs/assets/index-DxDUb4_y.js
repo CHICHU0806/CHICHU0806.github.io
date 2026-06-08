@@ -137,7 +137,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
         ${t.length?t.map(re).join(``):`<div class="empty-state">暂无项目。</div>`}
       </div>
     </section>
-  `}var ie=[{id:`f4-tutorial`,title:`F407开发板系列教程`,description:`整理STM32F407在RoboMaster赛事中的一些基本使用流程。`,open:!1,posts:[]},{id:`h7-tutorial`,title:`H7教程`,description:`整理STM32H732在RoboMaster赛事中的一些基本使用流程。`,open:!1,posts:[]},{id:`math-theory`,title:`数学理论推导系列教程`,description:`整理四元数、卡尔曼滤波、姿态解算、滤波算法等数学理论推导内容。`,open:!0,posts:[`3-1`,`3-2`]}];function ae(e,t=`暂无文章。`){return e.length?`
+  `}var ie=[{id:`f4-tutorial`,title:`F407开发板系列教程`,description:`整理STM32F407在RoboMaster赛事中的一些基本使用流程。`,open:!1,posts:[]},{id:`h7-tutorial`,title:`H732开发板系列教程`,description:`整理STM32H732在RoboMaster赛事中的一些基本使用流程。`,open:!1,posts:[]},{id:`math-theory`,title:`数学理论推导系列教程`,description:`整理RoboMaster赛事中电控组会用到的一些数学理论推导内容。`,open:!0,posts:[`3-1`,`3-2`]}];function ae(e,t=`暂无文章。`){return e.length?`
     <div class="grid grid-three">
       ${e.map(ne).join(``)}
     </div>
@@ -681,7 +681,7 @@ $$\\left|e\\right|=\\left|a\\right|\\left|\\^g\\right|\\sin δθ≈\\left|a\\rig
 
 $$\\left|e\\right|=δθ$$
 
-而 $e$本身又拥有 $x,y,z $轴的三轴分量，也就能很清楚地知道各轴分别需要修正多少。
+而 $e$本身又拥有 $x,y,z$轴的三轴分量，也就能很清楚地知道各轴分别需要修正多少。
 
 2. 叉乘的几何意义刚好对上“旋转误差”，按照公式中的写法，它直观表现了方向垂直于 $a$和 $\\^g$所在平面，把 $a$转到 $\\^g$时，对应的旋转轴方向。而通过旋转轴的方向加上右手定则，也能够让算式很清楚地知道反馈值是怎么把实际方向转动到预测方向的这一过程。
 
