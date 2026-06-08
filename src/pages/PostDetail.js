@@ -17,7 +17,7 @@ function escapeHtml(text = '') {
 }
 
 function renderToc(toc) {
-    const visibleToc = toc.filter((item) => item.level >= 2 && item.level <= 4)
+    const visibleToc = toc.filter((item) => item.level >= 1 && item.level <= 4)
 
     if (!visibleToc.length) {
         return `
