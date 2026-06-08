@@ -1,5 +1,5 @@
 import { site } from '../data/site.js'
-import { posts } from '../data/posts.js'
+import {getLatestPosts, posts} from '../data/posts.js'
 import { projects } from '../data/projects.js'
 
 import { SectionTitle } from '../components/SectionTitle.js'
@@ -7,9 +7,8 @@ import { PostCard } from '../components/PostCard.js'
 import { ProjectCard } from '../components/ProjectCard.js'
 
 export function Home() {
-    const featuredPosts = posts
-        .filter((post) => post.featured)
-        .slice(0, 3)
+
+    const latestPosts = getLatestPosts().slice(0, 3)
 
     const featuredProjects = projects
         .filter((project) => project.featured)
@@ -57,10 +56,10 @@ export function Home() {
 
       <div class="grid grid-three">
         ${
-        featuredPosts.length
-            ? featuredPosts.map(PostCard).join('')
+        latestPosts.length
+            ? latestPosts.map(PostCard).join('')
             : `<div class="empty-state">暂无文章。</div>`
-    }
+        }
       </div>
     </section>
 

@@ -696,3 +696,95 @@ button {
     margin-bottom: 32px;
   }
 }
+
+.section-first {
+  margin-top: 0;
+}
+
+.post-groups {
+  display: grid;
+  gap: 22px;
+}
+
+.post-archive-panel {
+  border: 1px solid var(--color-purple-line);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: var(--shadow-line);
+}
+
+.post-archive-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 26px;
+  color: var(--color-purple-deep);
+  cursor: pointer;
+  list-style: none;
+}
+
+.post-archive-summary::-webkit-details-marker {
+  display: none;
+}
+
+.post-archive-summary span:first-child {
+  display: grid;
+  gap: 8px;
+}
+
+.post-archive-summary strong {
+  font-size: 22px;
+  letter-spacing: -0.04em;
+}
+
+.post-archive-summary em {
+  color: var(--color-muted);
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.summary-mark {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.post-archive-panel[open] .summary-mark {
+  color: white;
+  background: var(--color-purple-main);
+  border-color: var(--color-purple-main);
+  font-size: 0;
+}
+
+.post-archive-panel[open] .summary-mark::before {
+  content: "收起";
+  font-size: 13px;
+}
+
+.post-archive-content {
+  padding: 0 26px 28px;
+}
+
+.post-archive-content::before {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 26px;
+  content: "";
+  background: var(--color-line);
+}
+
+@media (max-width: 860px) {
+  .post-archive-summary {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .summary-mark {
+    align-self: flex-start;
+  }
+}
