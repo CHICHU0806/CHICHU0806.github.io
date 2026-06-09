@@ -2574,7 +2574,7 @@ l0,-`+(t+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
         <p>没有找到这篇文章。</p>
         <p><a href="#/posts">返回文章列表</a></p>
       </section>
-    `;let n=xu[`../posts/${t.file}.md`],r=n?bu(n):{html:`<p>文章内容不存在。</p>`,toc:[]},i=t.tags.map(e=>`<span>${e}</span>`).join(``);return`
+    `;let n=xu[`../posts/**/${t.file}.md`],r=n?bu(n):{html:`<p>文章内容不存在。</p>`,toc:[]},i=t.tags.map(e=>`<span>${e}</span>`).join(``);return`
     <div class="article-layout">
       <aside class="article-toc">
         <div class="toc-title">目录</div>

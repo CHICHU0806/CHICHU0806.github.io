@@ -54,7 +54,7 @@ export function PostDetail(id) {
     `
     }
 
-    const modulePath = `../posts/${post.file}.md`
+    const modulePath = `../posts/**/${post.file}.md`
     const markdownText = postModules[modulePath]
 
     const result = markdownText
