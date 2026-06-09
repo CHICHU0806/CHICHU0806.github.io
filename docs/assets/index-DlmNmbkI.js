@@ -137,7 +137,7 @@ var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=
         ${t.length?t.map(re).join(``):`<div class="empty-state">暂无项目。</div>`}
       </div>
     </section>
-  `}var ie=[{id:`f4-tutorial`,title:`F407开发板系列教程`,description:`整理STM32F407在RoboMaster赛事中的一些基本使用流程。`,open:!1,posts:[]},{id:`h7-tutorial`,title:`H732开发板系列教程`,description:`整理STM32H732在RoboMaster赛事中的一些基本使用流程。`,open:!1,posts:[]},{id:`math-theory`,title:`数学理论推导系列教程`,description:`整理RoboMaster赛事中电控组会用到的一些数学理论推导内容。`,open:!0,posts:[`3-1`,`3-2`]}];function ae(e,t=`暂无文章。`){return e.length?`
+  `}var ie=[{id:`f4-tutorial`,title:`F407开发板系列教程`,description:`从这里开始学会使用你的RoboMaster入门第一块大疆C板。`,open:!1,posts:[]},{id:`h7-tutorial`,title:`H732开发板系列教程`,description:`现在不妨尝试使用难度更高的达妙MC02`,open:!0,posts:[`2-1`,`2-2`]},{id:`math-theory`,title:`数学理论推导系列教程`,description:`整理RoboMaster赛事中电控组会用到的一些数学理论推导内容。`,open:!0,posts:[`3-1`,`3-2`]}];function ae(e,t=`暂无文章。`){return e.length?`
     <div class="grid grid-three">
       ${e.map(ne).join(``)}
     </div>

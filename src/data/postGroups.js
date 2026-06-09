@@ -2,7 +2,7 @@ export const postGroups = [
     {
         id: 'f4-tutorial',
         title: 'F407开发板系列教程',
-        description: '整理STM32F407在RoboMaster赛事中的一些基本使用流程。',
+        description: '从这里开始学会使用你的RoboMaster入门第一块大疆C板。',
         open: false,
         posts: [
         ],
@@ -10,9 +10,11 @@ export const postGroups = [
     {
         id: 'h7-tutorial',
         title: 'H732开发板系列教程',
-        description: '整理STM32H732在RoboMaster赛事中的一些基本使用流程。',
-        open: false,
+        description: '现在不妨尝试使用难度更高的达妙MC02',
+        open: true,
         posts: [
+            '2-1',
+            '2-2'
         ],
     },
     {
