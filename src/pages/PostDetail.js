@@ -1,7 +1,7 @@
 import { getPostById } from '../data/posts.js'
 import { renderMarkdownWithToc } from '../utils/markdown.js'
 
-const postModules = import.meta.glob('../posts/*.md', {
+const postModules = import.meta.glob('../posts/**/*.md', {
     query: '?raw',
     import: 'default',
     eager: true,
