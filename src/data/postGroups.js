@@ -14,7 +14,7 @@ export const postGroups = [
         open: true,
         posts: [
             '2-1',
-            '2-2'
+            '2-2',
         ],
     },
     {
