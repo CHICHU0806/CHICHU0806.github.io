@@ -682,7 +682,7 @@ MPU（Memory Protection Unit 内存保护单元）与Cache（高速缓存）主�
 
 首先先放一个官方介绍在这里
 
-https://www\\.st\\.com/content/ccc/resource/technical/document/application\\_note/group1/98/6e/46/61/6e/2e/45/b0/DM00625700/files/DM00625700\\.pdf/jcr:content/translations/en\\.DM00625700\\.pdf
+https://www.st.com/content/ccc/resource/technical/document/application\\_note/group1/98/6e/46/61/6e/2e/45/b0/DM00625700/files/DM00625700\\.pdf/jcr:content/translations/en\\.DM00625700\\.pdf
 
 接下来我们具体介绍一下：
 
@@ -748,11 +748,11 @@ FDCAN相较于经典CAN，时钟不再挂在在APB总线上，也就是说在配
 
 那么Kernel Clock究竟由谁决定，我们不妨再看看时钟树：
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MzlkNmQ5MDgzZDdkZDAyNWZkY2VmYThiYjk4ODRjYjVfMGNjZmU3MzRkY2VhYWZjMDAxOTNkZWZiOTJjMThmNmNfSUQ6NzYwMjk0ODgzMTc4OTM3MDMyN18xNzgwOTc1Nzg2OjE3ODEwNjIxODZfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image7.PNG)
 
 在整个时钟树的右下角多出了一个FDCAN Clock Mux，这里就是最终决定FDCAN最初的频率的地方，正好我们再往前溯源，可以看到这里的PLL1Q其实就是下图的DIVQ1所对应的时钟频率80MHz。
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZThlOWM3ODNlMjVhZjUzNjljOGY2MTg5NTkwMTE0ZmZfNTQzMmQ1MDA4MDA4NDMxMWUyMmQ2ZDM2OTUxMWZmZTdfSUQ6NzYwMjk0ODgzMTQ5NTk2NTY0NV8xNzgwOTc1Nzg3OjE3ODEwNjIxODdfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image8.PNG)
 
 那么很好我们现在又遇到了新的变化，这里的PLL（锁相环）相对F4中的配置更加细致，对PLL内部结构进行了更加深入的剖析，主要分为了DIV开头，尾缀分别为MNPQR的5个参数，现在我们来具体介绍一下他们：
 和CAN拆解时钟源频率的步骤大似相当，首先DIV即Divider（分频器），MNPQR则是按照字母表顺序排列的几个字母，也暗指了他们的运作顺序。
@@ -811,7 +811,7 @@ FDCAN 提供三种取消息方式：
 
 第一部分主要聚焦于控制模式和CAN机制层的处理
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MWYyNTY1Yzk3ZTNmZGM2YTdlMDhjNDdmYmI2ODAyMzlfMTFjN2U3MjlkMGEyYWE4MWVkMGEzZGRmYjhkMGU0NjFfSUQ6NzYwMjk0ODgzMDc1Nzc1MTc3NF8xNzgwOTc1Nzg2OjE3ODEwNjIxODZfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image9.PNG)
 
 1. Frame Format确定帧格式为Classic CAN，即经典CAN控制模式，我们不需要任何FDCAN的新特性，因为我们用不到，并且硬件层面不支持。
 
@@ -827,7 +827,7 @@ FDCAN 提供三种取消息方式：
 
 - 内部环回模式（Internal loop\\-back mode）
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZjZlMzdmMzg5ZjkyMTY1ZjkzMWMwNzlmODRmNzIzMjZfOGI4M2VmMWI2OWJkODMxODcwOTZhOTAzNTcyMWM4NjdfSUQ6NzYwMjk0ODgzNDU5NTAxNTYxMV8xNzgwOTc1Nzg2OjE3ODEwNjIxODZfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image10.PNG)
 
 在这里我们只需要使用Normal mode即可。
 
@@ -851,7 +851,7 @@ FDCAN 提供三种取消息方式：
 
 第四部分是对于收发滤波处理的相关设置，主要包含标准帧/扩展帧滤波器数量的定义，FIFO队列中存放帧数量的定义，接受和发送buffer的容量大小定义等。
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Y2U3ZGFkYWViYzQzNWFhYmU5OGI0MjYzNmEyYTI5NTRfNzJiZjUzNzUwNmY3NGUzZTBmOGQ5ZmFhMmE0NTYwMWJfSUQ6NzYwMjk0ODgzNDUxOTU1MDkzNV8xNzgwOTc1Nzg3OjE3ODEwNjIxODdfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image11.PNG)
 
 1. Std/Ext Filters Nbr 标准/扩展帧过滤器数量
 
@@ -901,7 +901,7 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 首先是预分频，我们从时钟树设置的FDCAN始终为80MHz，如果预分频设置为1，那么按照公式中的内容
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDA2M2Q5YTUxNTJjYTc4ZDAyNzhkMTZiYzY0ZTZhOWNfNDlmY2UwNzRjZTY5NTE4NTJlMDViMTc3NDVkYzc2ZDhfSUQ6NzYwMjk0ODgzNDQ5MDEwODg1N18xNzgwOTc1Nzg3OjE3ODEwNjIxODdfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image12.PNG)
 
 我们需要让分母中的TSEG1与TSEG2相加满足80\\-1=79，这样才能让Baud=1MHz，最终才能满足经典CAN通信的要求。
 
@@ -909,7 +909,7 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 最后配置我个人配置出的情况如下图所示：
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NmJhM2M2YmE5Y2ZiZjk4NTMxNzI5MGE5N2JhNWY2MGJfOGZmNGU2NjMwZjM1ZGZmN2M3M2FlNjdhNGRiZTVjZGNfSUQ6NzYwMjk0ODgzMTA3NjU1MTYzM18xNzgwOTc1Nzg2OjE3ODEwNjIxODZfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image13.PNG)
 
 ## 还有一件事
 
@@ -917,15 +917,15 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 通过查询达妙MC02开发板的原理图，我们可以看到板子的FDCAN1的两个引脚分别为PD1与PD0，而打开FDCAN1默认提供给我们的引脚却是PA11与PA12，因此这里需要人为打开正确的引脚。
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTllZDY0YTFlY2IzMTNjN2Y0ZTEwN2RkYzYxMTMyNDNfYTkxYmZjNTYzYmY1NGMzYTdjOWVhMzA1ODJlNzZmNjdfSUQ6NzYwMjk0ODgzNDA1NDExNDI0MV8xNzgwOTc1Nzg2OjE3ODEwNjIxODZfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image14.PNG)
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZjNhYzk2MDZjMzZkNmI2MTRlNzFjNDEzNDZjNzUyNDJfNGJlZWE0NjMwNjMyNDQxODliNzdmZDJhZWFhZTVhMmJfSUQ6NzYwMjk0ODgzMjYwNzE0NDg5N18xNzgwOTc1Nzg3OjE3ODEwNjIxODdfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image15.PNG)
 
 做完这一步之后，我们需要再次回顾一些基础操作：
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MDc2OGM3YjgyODczNTVkNDNlOGNhZmU2YWJmMGEyN2VfNWNiMGY5YTFiMzFlZTdhODM5YWYwODEzN2EzZWFmODRfSUQ6NzYwMjk0ODgzMjI1MDY3ODIwMV8xNzgwOTc1Nzg3OjE3ODEwNjIxODdfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image16.PNG)
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OTYxZTcxM2RmNDViMDQ1YjNhM2JlYzkwMGI5N2U0MDZfNDczNWJjNzI0MGM3YjFmNmEwMzM5N2NhMzZlZjU4ZjJfSUQ6NzYwMjk0ODgzNDE5MjQ0NDM3NF8xNzgwOTc1Nzg2OjE3ODEwNjIxODZfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image17.PNG)
 
 至此，我们点击右上角的Generate Code即可开启代码层的编写。
 
@@ -933,7 +933,7 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 首先由于我们使用的对象从CAN变为FDCAN，所以之前使用的诸如HAL\\_CAN为前缀的内容都需要改为HAL\\_FDCAN，在最开始讲解CAN通讯的教程中我们是从构建一段CAN帧并且手动推送到邮箱进行发送的，而我们即使现在使用FDCAN的硬件，但实际上还是构建经典CAN的CAN帧，所以我们不妨来回顾一下之前在经典CAN中的操作：
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MzA1ZTI4OGViZDk5ZDFmYTk2NWFjYTM2NGUxNzM0NTNfN2NiYWVkNWU5YjU1ODk3YmM5YmVhZDljMWM3NTc1NWFfSUQ6NzYwMjk0ODgzMTQ3MjUzNjUyMV8xNzgwOTc1Nzg3OjE3ODEwNjIxODdfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image18.PNG)
 
 之前我们提到，在经典CAN的硬件上，一段CAN帧最重要的三要素就是帧头，数据与邮箱，并且根据C620电调的使用手册配置了帧头中的一些必要的内容，最后在填充数据之后把信息通过函数HAL\\_CAN\\_AddTxMessage推送到对应的CAN通道。
 
@@ -941,7 +941,7 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 首先由于我们使用的并不是FDCAN的体系，也就是说和Buffer，消息机制没有任何关系，我们仍然扎根于邮箱驱动的经典CAN体系，但是需要用FDCAN的框架进行对应的配置，那么首先我们要改动的结构是帧头，我们在这里需要改用FDCAN\\_TxHeaderTypeDef来定义TxHeader，同时对于帧头里需要配置的部分会增多，我们先看图：
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MzdiMDE0MTQzZTliZTBmYzY2YjE5YmU5MWRlOGQ4ZWZfMzI2Y2ExMjRiOTU4ZGQ5MGQzZTRiZTM5ZGYxMWM0NjdfSUQ6NzYwMjk0ODgzNDgwNDcxNDQ0MV8xNzgwOTc1Nzg2OjE3ODEwNjIxODZfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image19.PNG)
 
 首先是经典CAN同源的内容：
 
@@ -967,15 +967,15 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 帧头处理完之后，数据填充自然不必多说，只是最后推送信息的时候不再通过一个直接的邮箱去推送，而是直接把信息推进FIFO队列而不再依赖邮箱，因此我们可以看到HAL\\_FDCAN\\_AddMessageToTxFifoQ在命名表意上首先不再带有邮箱元素，并且在传入参数中也去除了邮箱，在某种程度上简化了信息发送过程。
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZjEzZmI2NjA1ZTgxMGY0YzM0MGI3ZDhkZDAwNzczMzFfMjllNzgzMDg1M2Y1NjI5OGZjZDg1YjE5OWQyOTAwYmVfSUQ6NzYwMjk0ODgzNDM4MjA1NjM5OV8xNzgwOTc1Nzg2OjE3ODEwNjIxODZfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image20.PNG)
 
 最后我们贴一下一个完整的发送函数的变动情况：
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZDczMDNjMzhhMGJkZjA3YmViYzA4YTZmYTBiM2ZhZGNfMDUyODVlOGYwMGQ3YmM5YTBhNWQ2YjY1YTQyNmI3ZTVfSUQ6NzYwMjk0ODgzNDI2Nzg5MjY4M18xNzgwOTc1Nzg3OjE3ODEwNjIxODdfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image21.PNG)
 
 要想真正发送出去，那么还是需要使用HAL\\_FDCAN\\_Start\\(\\&hfdcan1\\);并且在while循环中调用该函数即可
 
-![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OTVlNTZiOGE0OGU1MTJkNzFlMDUxMjM3ZjM0NDVmYzNfZmQwMjg2NjYyOTZkN2I5YzVjMTAxZDI4MTM4ZDUxM2FfSUQ6NzYwMjk0ODgzNDE1NDYzMDEwMl8xNzgwOTc1Nzg3OjE3ODEwNjIxODdfVjM)
+![Image](/images/posts/H723-Board/FDCAN/image22.PNG)
 
 # 结语
 
