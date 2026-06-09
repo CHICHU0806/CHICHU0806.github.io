@@ -12,7 +12,7 @@
 
 首先按照工程创建的顺序，在Clion新建项目并且打开CubeMX进行芯片的选型，这里采用STM32H724VGT6。当我们进入配置界面后，首先还是先选择DEBUG模式，在之前使用大疆C板的时候我们在SYS中选择了Serial Wire作为debug模式，但是在喵板上他把这个选择的部分移动到了最下方
 
-![Image](/images/posts/H723-Board/FDCAN/image1.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image1.png)
 
 如果忘记选择这一项同样会导致成砖，那么这一块的处理办法还是和F103相同，只需要短接开发板上BOOT的两个孔位即可更改启动方式解除锁死状态。
 
@@ -26,25 +26,25 @@ MPU（Memory Protection Unit 内存保护单元）与Cache（高速缓存）主�
 
 接下来首先还是老样子，在RCC中启用晶振作为外部时钟源。
 
-![Image](/images/posts/H723-Board/FDCAN/image2.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image2.png)
 
 然后转到Clock Configuration做进一步配置，首先我们要还是HSE\+PLL的时钟方案，通过查阅手册可以知道我们的外部晶振频率为24MHz。
 
-![Image](/images/posts/H723-Board/FDCAN/image3.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image3.png)
 
 因此我们初步改动的范围如下，虽然之前提系统时钟频率越高越好，那么为什么这里不和F4一样拉满选择550MHz而是选择480MHz呢？首先第一点，480MHz相较于C板的系统时钟频率已经足够快，并且在后续配置CAN通信的过程中必须要给自己留下足够的退路，我们之前提到CAN总线挂载在APB1总线上，我们不妨使用550MHz，这个时候分配给CAN1的时钟频率便来到了137\.5MHz，所以对后续的预分频，时钟相位1，2等处理都非常不方便，所以这里我个人更倾向于使用官方提供的480MHz，这样能让CAN总线的时钟频率来到120MHz，非常方便后续让波特率达到1MHz的目标。
 
-![Image](/images/posts/H723-Board/FDCAN/image4.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image4.png)
 
 ## 项目管理配置
 
 我们仍然采用Clion作为编译器，用CMake指导编译，因此需要在Toolchain中选择CMake
 
-![Image](/images/posts/H723-Board/FDCAN/image5.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image5.png)
 
 同样的老生常谈，
 
-![Image](/images/posts/H723-Board/FDCAN/image6.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image6.png)
 
 综上，我们在CubeMX配置的内容就已经基本完成，我们现在可以直接使用电机外设进行测试。
 
@@ -122,11 +122,11 @@ FDCAN相较于经典CAN，时钟不再挂在在APB总线上，也就是说在配
 
 那么Kernel Clock究竟由谁决定，我们不妨再看看时钟树：
 
-![Image](/images/posts/H723-Board/FDCAN/image7.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image7.png)
 
 在整个时钟树的右下角多出了一个FDCAN Clock Mux，这里就是最终决定FDCAN最初的频率的地方，正好我们再往前溯源，可以看到这里的PLL1Q其实就是下图的DIVQ1所对应的时钟频率80MHz。
 
-![Image](/images/posts/H723-Board/FDCAN/image8.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image8.png)
 
 那么很好我们现在又遇到了新的变化，这里的PLL（锁相环）相对F4中的配置更加细致，对PLL内部结构进行了更加深入的剖析，主要分为了DIV开头，尾缀分别为MNPQR的5个参数，现在我们来具体介绍一下他们：
 和CAN拆解时钟源频率的步骤大似相当，首先DIV即Divider（分频器），MNPQR则是按照字母表顺序排列的几个字母，也暗指了他们的运作顺序。
@@ -185,7 +185,7 @@ FDCAN 提供三种取消息方式：
 
 第一部分主要聚焦于控制模式和CAN机制层的处理
 
-![Image](/images/posts/H723-Board/FDCAN/image9.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image9.png)
 
 1. Frame Format确定帧格式为Classic CAN，即经典CAN控制模式，我们不需要任何FDCAN的新特性，因为我们用不到，并且硬件层面不支持。
 
@@ -201,7 +201,7 @@ FDCAN 提供三种取消息方式：
 
 - 内部环回模式（Internal loop\-back mode）
 
-![Image](/images/posts/H723-Board/FDCAN/image10.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image10.png)
 
 在这里我们只需要使用Normal mode即可。
 
@@ -225,7 +225,7 @@ FDCAN 提供三种取消息方式：
 
 第四部分是对于收发滤波处理的相关设置，主要包含标准帧/扩展帧滤波器数量的定义，FIFO队列中存放帧数量的定义，接受和发送buffer的容量大小定义等。
 
-![Image](/images/posts/H723-Board/FDCAN/image11.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image11.png)
 
 1. Std/Ext Filters Nbr 标准/扩展帧过滤器数量
 
@@ -275,7 +275,7 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 首先是预分频，我们从时钟树设置的FDCAN始终为80MHz，如果预分频设置为1，那么按照公式中的内容
 
-![Image](/images/posts/H723-Board/FDCAN/image12.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image12.png)
 
 我们需要让分母中的TSEG1与TSEG2相加满足80\-1=79，这样才能让Baud=1MHz，最终才能满足经典CAN通信的要求。
 
@@ -283,7 +283,7 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 最后配置我个人配置出的情况如下图所示：
 
-![Image](/images/posts/H723-Board/FDCAN/image13.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image13.png)
 
 ## 还有一件事
 
@@ -291,15 +291,15 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 通过查询达妙MC02开发板的原理图，我们可以看到板子的FDCAN1的两个引脚分别为PD1与PD0，而打开FDCAN1默认提供给我们的引脚却是PA11与PA12，因此这里需要人为打开正确的引脚。
 
-![Image](/images/posts/H723-Board/FDCAN/image14.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image14.png)
 
-![Image](/images/posts/H723-Board/FDCAN/image15.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image15.png)
 
 做完这一步之后，我们需要再次回顾一些基础操作：
 
-![Image](/images/posts/H723-Board/FDCAN/image16.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image16.png)
 
-![Image](/images/posts/H723-Board/FDCAN/image17.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image17.png)
 
 至此，我们点击右上角的Generate Code即可开启代码层的编写。
 
@@ -307,7 +307,7 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 首先由于我们使用的对象从CAN变为FDCAN，所以之前使用的诸如HAL\_CAN为前缀的内容都需要改为HAL\_FDCAN，在最开始讲解CAN通讯的教程中我们是从构建一段CAN帧并且手动推送到邮箱进行发送的，而我们即使现在使用FDCAN的硬件，但实际上还是构建经典CAN的CAN帧，所以我们不妨来回顾一下之前在经典CAN中的操作：
 
-![Image](/images/posts/H723-Board/FDCAN/image18.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image18.png)
 
 之前我们提到，在经典CAN的硬件上，一段CAN帧最重要的三要素就是帧头，数据与邮箱，并且根据C620电调的使用手册配置了帧头中的一些必要的内容，最后在填充数据之后把信息通过函数HAL\_CAN\_AddTxMessage推送到对应的CAN通道。
 
@@ -315,7 +315,7 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 首先由于我们使用的并不是FDCAN的体系，也就是说和Buffer，消息机制没有任何关系，我们仍然扎根于邮箱驱动的经典CAN体系，但是需要用FDCAN的框架进行对应的配置，那么首先我们要改动的结构是帧头，我们在这里需要改用FDCAN\_TxHeaderTypeDef来定义TxHeader，同时对于帧头里需要配置的部分会增多，我们先看图：
 
-![Image](/images/posts/H723-Board/FDCAN/image19.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image19.png)
 
 首先是经典CAN同源的内容：
 
@@ -341,15 +341,15 @@ CCU是FDCAN在其专属模式下用来自动校准位时间、补偿时钟误差
 
 帧头处理完之后，数据填充自然不必多说，只是最后推送信息的时候不再通过一个直接的邮箱去推送，而是直接把信息推进FIFO队列而不再依赖邮箱，因此我们可以看到HAL\_FDCAN\_AddMessageToTxFifoQ在命名表意上首先不再带有邮箱元素，并且在传入参数中也去除了邮箱，在某种程度上简化了信息发送过程。
 
-![Image](/images/posts/H723-Board/FDCAN/image20.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image20.png)
 
 最后我们贴一下一个完整的发送函数的变动情况：
 
-![Image](/images/posts/H723-Board/FDCAN/image21.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image21.png)
 
 要想真正发送出去，那么还是需要使用HAL\_FDCAN\_Start\(\&hfdcan1\);并且在while循环中调用该函数即可
 
-![Image](/images/posts/H723-Board/FDCAN/image22.PNG)
+![Image](/images/posts/H723-Board/FDCAN/image22.png)
 
 # 结语
 
