@@ -12,7 +12,7 @@
 
 首先按照工程创建的顺序，在Clion新建项目并且打开CubeMX进行芯片的选型，这里采用STM32H724VGT6。当我们进入配置界面后，首先还是先选择DEBUG模式，在之前使用大疆C板的时候我们在SYS中选择了Serial Wire作为debug模式，但是在喵板上他把这个选择的部分移动到了最下方
 
-![Image](/images/posts/H723-Board/FDCAN/image1.png)
+![Image](/images/posts/H723-Board/FDCAN/image1.PNG)
 
 如果忘记选择这一项同样会导致成砖，那么这一块的处理办法还是和F103相同，只需要短接开发板上BOOT的两个孔位即可更改启动方式解除锁死状态。
 
