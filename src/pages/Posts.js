@@ -102,7 +102,7 @@ export function Posts() {
         </div>
 
         <div class="section-desc">
-          点击展开后，可以按照发布时间倒序查看全部文章。
+          可以按照发布时间倒序查看全部文章。
         </div>
       </div>
 
@@ -117,7 +117,7 @@ export function Posts() {
         </div>
 
         <div class="section-desc">
-          按主题整理文章，合集顺序和合集内部文章顺序都可以自定义。
+          按主题整理了文章。
         </div>
       </div>
 
