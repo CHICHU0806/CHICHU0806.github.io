@@ -716,7 +716,7 @@ https://www.st.com/content/ccc/resource/technical/document/application\\_note/gr
 
 我们会使用HAL\\_CAN\\_AddTxMessage这类HAL库函数来对发送信息进行处理
 
-### FDCAN 的思维方式是**“一切都是Message RAM里的消息对象”**
+### FDCAN 的思维方式是“一切都是Message RAM里的消息对象”
 
 包括：
 
@@ -785,11 +785,11 @@ FDCAN：
 
 FDCAN 提供三种取消息方式：
 
-1. **轮询：**最直观 ，最好调试
+1. 轮询：最直观 ，最好调试
 
-2. **中断：**工程常用，需要NVIC配合
+2. 中断：工程常用，需要NVIC配合
 
-3. **DMA：**高性能，必须配置Cache/MPU
+3. DMA：高性能，必须配置Cache/MPU
 
 ## 所以到底怎么配？
 
