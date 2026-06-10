@@ -27,4 +27,12 @@ export const postGroups = [
             '3-2',
         ],
     },
+    {
+        id: 'math-theory',
+        title: '重庆大学CRTC校赛入门教程',
+        description: '面向大一同学在STM32F103C8T6上提供一些最基础的入门指导。',
+        open: false,
+        posts: [
+        ],
+    },
 ]
