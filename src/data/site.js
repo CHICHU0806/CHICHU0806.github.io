@@ -16,7 +16,7 @@ export const site = {
         },
         {
             label: 'BiliBili',
-            href: 'https://www.zhihu.com/people/16-21-89-16',
+            href: 'https://space.bilibili.com/472337404',
         },
         {
             label: '知乎',
