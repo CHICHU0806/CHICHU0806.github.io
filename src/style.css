@@ -847,50 +847,59 @@ button {
     align-self: flex-start;
   }
 }
-
+ 
 .code-block {
   margin: 30px 0;
-  border: 1px solid rgba(109, 59, 189, 0.38);
-  background: #21152f;
+  border: 1px solid rgba(109, 59, 189, 0.32);
+  background: #f8f7fb;
   box-shadow: var(--shadow-line);
 }
 
 .code-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
   height: 38px;
   padding: 0 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-          linear-gradient(90deg, rgba(109, 59, 189, 0.28), transparent),
-          #2b1a3c;
+  border-bottom: 1px solid rgba(109, 59, 189, 0.18);
+  background: #f3effb;
 }
 
-.code-dot {
-  width: 9px;
-  height: 9px;
-  border: 1px solid var(--color-gold);
-  background: var(--color-gold-soft);
+.code-title {
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.code-title::before {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  content: "";
+  background: var(--color-gold);
 }
 
 .code-lang {
-  color: var(--color-gold);
-  font-size: 12px;
+  color: var(--color-purple-main);
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .code-block pre {
   margin: 0;
-  padding: 22px 24px;
+  padding: 14px 0;
   overflow-x: auto;
   background: transparent;
   box-shadow: none;
 }
 
 .code-block code {
+  display: grid;
+  min-width: max-content;
+  padding: 0;
+  color: #24292f;
+  background: transparent;
   font-family:
           "JetBrains Mono",
           "Cascadia Code",
@@ -901,13 +910,75 @@ button {
   line-height: 1.85;
 }
 
+.code-line {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  min-height: 26px;
+}
+
+.code-line:hover {
+  background: rgba(109, 59, 189, 0.06);
+}
+
+.code-line-number {
+  padding-right: 14px;
+  color: #8b8197;
+  user-select: none;
+  text-align: right;
+}
+
+.code-line-content {
+  padding-right: 24px;
+  white-space: pre;
+}
+
 .article-body pre {
   border: none;
   background: transparent;
 }
 
 .article-body pre code {
-  padding: 0;
   border: none;
   background: transparent;
+}
+
+.hljs-comment {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in {
+  color: #cf222e;
+}
+
+.hljs-type,
+.hljs-title.class_ {
+  color: #8250df;
+}
+
+.hljs-title.function_,
+.hljs-function .hljs-title {
+  color: #6639ba;
+}
+
+.hljs-number,
+.hljs-literal {
+  color: #953800;
+}
+
+.hljs-string {
+  color: #0a7a4b;
+}
+
+.hljs-variable,
+.hljs-params {
+  color: #24292f;
+}
+
+.hljs-symbol,
+.hljs-attr,
+.hljs-property {
+  color: #b15c00;
 }

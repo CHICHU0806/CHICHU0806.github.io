@@ -3,12 +3,28 @@ import texmath from 'markdown-it-texmath'
 import katex from 'katex'
 import hljs from 'highlight.js'
 import 'katex/dist/katex.min.css'
+import 'highlight.js/styles/github.css'
 
 const md = new MarkdownIt({
     html: true,
     linkify: true,
     typographer: true,
     breaks: false,
+
+    highlight(code, language) {
+        if (language && hljs.getLanguage(language)) {
+            try {
+                return hljs.highlight(code, {
+                    language,
+                    ignoreIllegals: true,
+                }).value
+            } catch {
+                return md.utils.escapeHtml(code)
+            }
+        }
+
+        return md.utils.escapeHtml(code)
+    },
 })
 
 md.use(texmath, {
@@ -22,7 +38,7 @@ md.use(texmath, {
 
 const defaultFenceRenderer = md.renderer.rules.fence
 
-md.renderer.rules.fence = function (tokens, idx, options, env, self) {
+md.renderer.rules.fence = function (tokens, idx, options) {
     const token = tokens[idx]
     const rawInfo = token.info ? token.info.trim() : ''
     const language = rawInfo.split(/\s+/g)[0] || 'text'
@@ -43,19 +59,36 @@ md.renderer.rules.fence = function (tokens, idx, options, env, self) {
         bash: 'Bash',
         shell: 'Shell',
         powershell: 'PowerShell',
-        text: 'Plain Text',
-        plaintext: 'Plain Text',
+        text: 'Text',
+        plaintext: 'Text',
     }
 
     const label = languageLabelMap[language.toLowerCase()] || language.toUpperCase()
 
+    const lines = highlighted
+        .split('\n')
+        .map((line, index, array) => {
+            if (index === array.length - 1 && line === '') {
+                return ''
+            }
+
+            return `
+        <span class="code-line">
+          <span class="code-line-number">${index + 1}</span>
+          <span class="code-line-content">${line || ' '}</span>
+        </span>
+      `
+        })
+        .join('')
+
     return `
     <div class="code-block">
       <div class="code-header">
-        <span class="code-dot"></span>
+        <span class="code-title">代码块</span>
         <span class="code-lang">${md.utils.escapeHtml(label)}</span>
       </div>
-      <pre><code class="hljs language-${md.utils.escapeHtml(language)}">${highlighted}</code></pre>
+
+      <pre><code class="hljs language-${md.utils.escapeHtml(language)}">${lines}</code></pre>
     </div>
   `
 }
