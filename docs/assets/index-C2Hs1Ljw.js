@@ -324,9 +324,10 @@ SYSCLK 拉到 168MHz
 
 通过查询大疆 C 板原理图可以知道，C 板上的 CAN1 实际使用的是 PD0 / PD1，而不是默认状态下常见的 PB8 / PB9。因此我们需要在右侧引脚图中手动修改到正确位置。
 
-![image\\.png](/images/posts/F407-Board/CAN/image8.png)
-
-![image\\.png](/images/posts/F407-Board/CAN/image3.png)
+<div class="image-row">
+  <img src="/images/posts/F407-Board/CAN/image8.png" alt="PD0 配置 CAN1_RX">
+  <img src="/images/posts/F407-Board/CAN/image3.png" alt="PD1 配置 CAN1_TX">
+</div>
 
 这里需要注意的是，CAN 并不是普通 GPIO 高低电平通信。STM32 的 CAN\\_TX / CAN\\_RX 只是连接到板载 CAN 收发器的一侧，真正挂到 CAN\\_H / CAN\\_L 总线上的信号还要经过收发器转换。因此我们在 CubeMX 里配置的是芯片外设引脚，而在接线时需要接的是开发板对外引出的 CAN\\_H、CAN\\_L 和 GND。
 
