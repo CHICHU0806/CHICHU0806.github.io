@@ -45,7 +45,7 @@
 
 内部时钟当然也能用，但是它的精度与稳定性一般不如外部晶振。对于 CAN 这种对波特率比较敏感的通信总线来说，时钟偏差会直接影响通信稳定性，所以我们一般会选择 HSE，也就是 High Speed External，高速外部时钟。
 
-![image\.png](/images/posts/F407-Board/CAN/image.png)
+![image\.png](/images/posts/F407-Board/CAN/image5.png)
 
 那么问题来了，外部晶振只有 12MHz，而 STM32F407 的最高主频可以达到 168MHz，我们显然不可能直接拿 12MHz 当系统主频使用。因此这里还需要引入 PLL，也就是锁相环（Phase\-Locked Loop）。
 
@@ -72,7 +72,7 @@ SYSCLK 拉到 168MHz
 
 这里我们需要启用高速外部时钟源，目的就是让前面时钟树中配置的 HSE 真正有来源。
 
-![image\.png](/images/posts/F407-Board/CAN/image 1.png)
+![image\.png](/images/posts/F407-Board/CAN/image1.png)
 
 这里不要把 RCC 当作一个无关紧要的配置项。如果外部时钟没有正确启用，那么后续你在时钟树里写得再漂亮，实际生成代码时也可能无法按照预期运行。
 
@@ -82,7 +82,7 @@ SYSCLK 拉到 168MHz
 
 首先需要设置 Debug 方式。对于大疆 C 板，我们使用 ST\-Link 进行调试和下载程序，因此这里选择 Serial Wire，也就是 SWD（Serial Wire Debug）。这个选项一定不要忘记，否则后续可能出现程序烧录后无法再次连接调试器的情况，也就是所谓的“成砖”，需要通过Boot引脚进行复原。
 
-![image\.png](/images/posts/F407-Board/CAN/image 7.png)
+![image\.png](/images/posts/F407-Board/CAN/image7.png)
 
 至于 Timebase Source，如果只是完成本章的 CAN 发送实验，使用 SysTick 或 TIM1 都可以完成基本功能。早期教程里我们选择 TIM1 作为时基，是因为 TIM1 是高级定时器，在电机控制相关内容中经常出现；但是如果后续工程中接入了其他内容，或者对延时函数有更高要求，就需要重新评估时基选择，避免不同模块之间出现冲突。
 
@@ -92,15 +92,15 @@ SYSCLK 拉到 168MHz
 
 首先启用 CAN1。
 
-![image\.png](/images/posts/F407-Board/CAN/image 6.png)
+![image\.png](/images/posts/F407-Board/CAN/image6.png)
 
 这里有一个非常容易踩坑的地方：**CubeMX 自动给出的 CAN1 默认引脚不一定等于开发板实际接出来的 CAN 引脚。**
 
 通过查询大疆 C 板原理图可以知道，C 板上的 CAN1 实际使用的是 PD0 / PD1，而不是默认状态下常见的 PB8 / PB9。因此我们需要在右侧引脚图中手动修改到正确位置。
 
-![image\.png](/images/posts/F407-Board/CAN/image 8.png)
+![image\.png](/images/posts/F407-Board/CAN/image8.png)
 
-![image\.png](/images/posts/F407-Board/CAN/image 3.png)
+![image\.png](/images/posts/F407-Board/CAN/image3.png)
 
 这里需要注意的是，CAN 并不是普通 GPIO 高低电平通信。STM32 的 CAN\_TX / CAN\_RX 只是连接到板载 CAN 收发器的一侧，真正挂到 CAN\_H / CAN\_L 总线上的信号还要经过收发器转换。因此我们在 CubeMX 里配置的是芯片外设引脚，而在接线时需要接的是开发板对外引出的 CAN\_H、CAN\_L 和 GND。
 
@@ -112,7 +112,7 @@ SYSCLK 拉到 168MHz
 
 由于大疆 C620 电调使用的经典 CAN 波特率为 1Mbps，所以我们在 CubeMX 中需要让 Baud Rate 最终等于或尽可能接近 1000000 bit/s。
 
-![image\.png](/images/posts/F407-Board/CAN/image 2.png)
+![image\.png](/images/posts/F407-Board/CAN/image2.png)
 
 如果这里配置成 500K、250K 或者其他频率，那么电调和主控板虽然都在发信号，但是彼此根本听不懂对方在说什么。这种问题在调试时很烦，因为你可能会怀疑接线、怀疑代码、怀疑电机，最后才发现只是波特率没对上。
 
@@ -185,7 +185,7 @@ $SP = \frac{1 + 15}{1 + 15 + 5}=\frac{16}{21}≈76.19\%$
 
 想要驱动任何一家公司出品的电机，第一件事便是去看他的控制协议：
 
-![image\.png](/images/posts/F407-Board/CAN/image 4.png)
+![image\.png](/images/posts/F407-Board/CAN/image4.png)
 
 对于大疆电机协议来说，一帧控制 1\~4 号电机电流的 CAN 报文，其标准 ID 为 0x200，数据长度为 8 个字节。其中每两个字节对应一个电机电流值，顺序如下：
 
