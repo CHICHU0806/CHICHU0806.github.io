@@ -3,7 +3,6 @@ import texmath from 'markdown-it-texmath'
 import katex from 'katex'
 import hljs from 'highlight.js'
 import 'katex/dist/katex.min.css'
-import 'highlight.js/styles/github.css'
 
 const md = new MarkdownIt({
     html: true,
@@ -42,7 +41,7 @@ md.renderer.rules.fence = function (tokens, idx, options) {
     const token = tokens[idx]
     const rawInfo = token.info ? token.info.trim() : ''
     const language = rawInfo.split(/\s+/g)[0] || 'text'
-    const code = token.content
+    const code = token.content.replace(/^\n+|\n+$/g, '')
 
     const highlighted = options.highlight
         ? options.highlight(code, language)

@@ -847,11 +847,11 @@ button {
     align-self: flex-start;
   }
 }
- 
+
 .code-block {
   margin: 30px 0;
-  border: 1px solid rgba(109, 59, 189, 0.32);
-  background: #f8f7fb;
+  border: 1px solid rgba(109, 59, 189, 0.42);
+  background: #21152f;
   box-shadow: var(--shadow-line);
 }
 
@@ -859,16 +859,18 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 38px;
-  padding: 0 16px;
-  border-bottom: 1px solid rgba(109, 59, 189, 0.18);
-  background: #f3effb;
+  height: 40px;
+  padding: 0 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+          linear-gradient(90deg, rgba(109, 59, 189, 0.34), transparent),
+          #2b1a3c;
 }
 
 .code-title {
-  color: var(--color-muted);
+  color: #d8c8ef;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .code-title::before {
@@ -881,14 +883,16 @@ button {
 }
 
 .code-lang {
-  color: var(--color-purple-main);
-  font-size: 13px;
-  font-weight: 800;
+  color: var(--color-gold);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .code-block pre {
   margin: 0;
-  padding: 14px 0;
+  padding: 16px 0;
   overflow-x: auto;
   background: transparent;
   box-shadow: none;
@@ -898,7 +902,7 @@ button {
   display: grid;
   min-width: max-content;
   padding: 0;
-  color: #24292f;
+  color: #f4ecff;
   background: transparent;
   font-family:
           "JetBrains Mono",
@@ -907,22 +911,22 @@ button {
           Consolas,
           monospace;
   font-size: 14px;
-  line-height: 1.85;
+  line-height: 1.65;
 }
 
 .code-line {
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);
-  min-height: 26px;
+  min-height: 24px;
 }
 
 .code-line:hover {
-  background: rgba(109, 59, 189, 0.06);
+  background: rgba(255, 255, 255, 0.045);
 }
 
 .code-line-number {
   padding-right: 14px;
-  color: #8b8197;
+  color: rgba(216, 200, 239, 0.42);
   user-select: none;
   text-align: right;
 }
@@ -935,50 +939,64 @@ button {
 .article-body pre {
   border: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .article-body pre code {
+  padding: 0;
   border: none;
   background: transparent;
 }
 
-.hljs-comment {
-  color: #8b949e;
+/* highlight.js 颜色覆盖 */
+.code-block .hljs {
+  color: #f4ecff;
+  background: transparent;
+}
+
+.code-block .hljs-comment,
+.code-block .hljs-quote {
+  color: #8f879b;
   font-style: italic;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-built_in {
-  color: #cf222e;
+.code-block .hljs-keyword,
+.code-block .hljs-selector-tag,
+.code-block .hljs-literal {
+  color: #ff7aa8;
 }
 
-.hljs-type,
-.hljs-title.class_ {
-  color: #8250df;
+.code-block .hljs-type,
+.code-block .hljs-built_in,
+.code-block .hljs-title.class_ {
+  color: #d8b4ff;
 }
 
-.hljs-title.function_,
-.hljs-function .hljs-title {
-  color: #6639ba;
+.code-block .hljs-title.function_,
+.code-block .hljs-function .hljs-title {
+  color: #f0c96a;
 }
 
-.hljs-number,
-.hljs-literal {
-  color: #953800;
+.code-block .hljs-number {
+  color: #ffbc7a;
 }
 
-.hljs-string {
-  color: #0a7a4b;
+.code-block .hljs-string {
+  color: #9ee6a8;
 }
 
-.hljs-variable,
-.hljs-params {
-  color: #24292f;
+.code-block .hljs-variable,
+.code-block .hljs-params,
+.code-block .hljs-name {
+  color: #f4ecff;
 }
 
-.hljs-symbol,
-.hljs-attr,
-.hljs-property {
-  color: #b15c00;
+.code-block .hljs-attr,
+.code-block .hljs-property,
+.code-block .hljs-symbol {
+  color: #c9a24d;
+}
+
+.code-block .hljs-meta {
+  color: #9fd7ff;
 }
