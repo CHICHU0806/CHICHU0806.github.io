@@ -1,8 +1,18 @@
+// ============================================================
+// 依赖导入
+// ============================================================
+
 import MarkdownIt from 'markdown-it'
 import texmath from 'markdown-it-texmath'
 import katex from 'katex'
 import hljs from 'highlight.js'
+
 import 'katex/dist/katex.min.css'
+
+
+// ============================================================
+// Markdown 基础配置
+// ============================================================
 
 const md = new MarkdownIt({
     html: true,
@@ -26,6 +36,11 @@ const md = new MarkdownIt({
     },
 })
 
+
+// ============================================================
+// KaTeX 数学公式支持
+// ============================================================
+
 md.use(texmath, {
     engine: katex,
     delimiters: 'dollars',
@@ -35,36 +50,33 @@ md.use(texmath, {
     },
 })
 
-const defaultFenceRenderer = md.renderer.rules.fence
 
-md.renderer.rules.fence = function (tokens, idx, options) {
-    const token = tokens[idx]
-    const rawInfo = token.info ? token.info.trim() : ''
-    const language = rawInfo.split(/\s+/g)[0] || 'text'
-    const code = token.content.replace(/^\n+|\n+$/g, '')
+// ============================================================
+// 代码块渲染：语言栏、行号、语法高亮
+// ============================================================
 
-    const highlighted = options.highlight
-        ? options.highlight(code, language)
-        : md.utils.escapeHtml(code)
+const languageLabelMap = {
+    c: 'C',
+    cpp: 'C++',
+    cxx: 'C++',
+    js: 'JavaScript',
+    javascript: 'JavaScript',
+    ts: 'TypeScript',
+    json: 'JSON',
+    bash: 'Bash',
+    shell: 'Shell',
+    powershell: 'PowerShell',
+    text: 'Text',
+    plaintext: 'Text',
+}
 
-    const languageLabelMap = {
-        c: 'C',
-        cpp: 'C++',
-        cxx: 'C++',
-        js: 'JavaScript',
-        javascript: 'JavaScript',
-        ts: 'TypeScript',
-        json: 'JSON',
-        bash: 'Bash',
-        shell: 'Shell',
-        powershell: 'PowerShell',
-        text: 'Text',
-        plaintext: 'Text',
-    }
+function getLanguageLabel(language) {
+    const normalizedLanguage = language.toLowerCase()
+    return languageLabelMap[normalizedLanguage] || language.toUpperCase()
+}
 
-    const label = languageLabelMap[language.toLowerCase()] || language.toUpperCase()
-
-    const lines = highlighted
+function renderCodeLines(highlightedCode) {
+    return highlightedCode
         .split('\n')
         .map((line, index, array) => {
             if (index === array.length - 1 && line === '') {
@@ -79,6 +91,20 @@ md.renderer.rules.fence = function (tokens, idx, options) {
       `
         })
         .join('')
+}
+
+md.renderer.rules.fence = function (tokens, idx, options) {
+    const token = tokens[idx]
+    const rawInfo = token.info ? token.info.trim() : ''
+    const language = rawInfo.split(/\s+/g)[0] || 'text'
+    const code = token.content.replace(/^\n+|\n+$/g, '')
+
+    const highlighted = options.highlight
+        ? options.highlight(code, language)
+        : md.utils.escapeHtml(code)
+
+    const label = getLanguageLabel(language)
+    const lines = renderCodeLines(highlighted)
 
     return `
     <div class="code-block">
@@ -92,12 +118,19 @@ md.renderer.rules.fence = function (tokens, idx, options) {
   `
 }
 
+
+// ============================================================
+// 标题 id 与目录生成
+// ============================================================
+
 function slugify(text) {
-    return text
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/[^\p{L}\p{N}\-_]+/gu, '') || 'section'
+    return (
+        text
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[^\p{L}\p{N}\-_]+/gu, '') || 'section'
+    )
 }
 
 function createUniqueSlug(text, slugMap) {
@@ -131,6 +164,11 @@ md.renderer.rules.heading_open = function (tokens, idx, options, env, self) {
 
     return self.renderToken(tokens, idx, options)
 }
+
+
+// ============================================================
+// 对外导出：渲染 Markdown 并返回目录
+// ============================================================
 
 export function renderMarkdownWithToc(markdownText = '') {
     const env = {
