@@ -51,18 +51,20 @@
 
 PLL 的作用可以类比变压器，能够将输入的频率进行“升压”，从而以高频输出，也就是：
 
-```Plain Text
+````md
+```cpp
 外部稳定时钟（相对低频）--倍频/分频--> 系统真正使用的高速主频
-```
+````
 
 所以我们在时钟树中需要做的核心流程就是：
 
-```Plain Text
+````md
+```cpp
 HSE = 12MHz
 HSE 作为 PLL 的输入
 PLLCLK 作为 System Clock Mux
 SYSCLK 拉到 168MHz
-```
+````
 
 当我们把输入频率和系统主频设置好之后，CubeMX 一般会自动帮我们调整中间的倍频和分频参数。如果出现红色报错，就说明某一路总线频率超出了芯片允许范围，需要重新调整。
 
@@ -140,12 +142,13 @@ $1000000 = \frac{42000000}{Prescaler \times (1 + TSEG1 + TSEG2)}$
 
 ![image\.png](/images/posts/F407-Board/CAN/image.png)
 
-```Plain Text
+````md
+```cpp
 Prescaler = 2
 TSEG1     = 15
 TSEG2     = 5
 SJW       = 1
-```
+````
 
 此时有：
 
@@ -195,7 +198,7 @@ Data[0] Data[1] -> ID 1 电机电流
 Data[2] Data[3] -> ID 2 电机电流
 Data[4] Data[5] -> ID 3 电机电流
 Data[6] Data[7] -> ID 4 电机电流
-```
+````
 
 那么我们不妨先把这件事转成更接近代码的语言：
 
@@ -216,7 +219,7 @@ Data[6] Data[7] -> ID 4 电机电流
 CAN_TxHeaderTypeDef TxHeader;   // 帧头
 uint8_t TxData[8];              // 数据区
 uint32_t TxMailbox;             // 发送邮箱
-```
+````
 
 这里的“帧头”的作用是描述这段 CAN 报文的基本属性。比如这段报文的标准 ID 是多少，是标准帧还是扩展帧，是数据帧还是远程帧，数据长度是多少。
 
@@ -239,7 +242,7 @@ uint32_t TxMailbox;             // 发送邮箱
                             ←------写在这里！
 
 /* USER CODE END 0 */
-```
+````
 
 ````md
 ```cpp
@@ -268,7 +271,7 @@ HAL_StatusTypeDef CAN_Send_MotorCmd(int16_t motor1, int16_t motor2, int16_t moto
     //最后将我们确定的帧头，数组，邮箱等信息通过这一HAL库函数传递到hcan1来发送到总线上
     return HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
 }
-```
+````
 
 这里我们逐步拆开来看。
 
@@ -288,18 +291,19 @@ typedef enum
   *HAL_BUSY     *= 0x02U,
   *HAL_TIMEOUT  *= 0x03U
 } HAL_StatusTypeDef;
-```
+````
 
 这也是为什么我们把发送函数写成带返回值的形式。因为一旦 CAN 发送失败，我们可以在主函数里根据返回值进入 `Error_Handler()`，从而更快定位问题。
 
 接着看帧头部分：
 
-```C
+````md
+```cpp
 TxHeader.StdId = 0x200;
 TxHeader.IDE = CAN_ID_STD;
 TxHeader.RTR = CAN_RTR_DATA;
 TxHeader.DLC = 8;
-```
+````
 
 这几行其实就确定了这帧报文的身份：
 
@@ -309,7 +313,7 @@ TxHeader.DLC = 8;
 CAN_ID_STD   -> 标准帧
 CAN_RTR_DATA -> 数据帧
 DLC = 8      -> 8 字节数据
-```
+````
 
 然后是数据填充部分。虽然本章可能只接了一个电机，但是我们仍然一次性传入 4 个电机的电流值，这是因为 0x200 这帧报文本来就规定了 8 字节长度，每两个字节对应一个电机。
 
@@ -330,7 +334,7 @@ TxData[1] = (uint8_t)(motor1);
 int16_t motor1 = 高8位 + 低8位
 TxData[0] 放高8位
 TxData[1] 放低8位
-```
+````
 
 如果这里高低位顺序写反，电调解析出来的电流值就会完全不对，所以这一块一定要按照电机协议来写。
 
@@ -340,10 +344,11 @@ TxData[1] 放低8位
 
 在 `main.c` 的 `/* USER CODE BEGIN 2 */` 中加入：
 
-```C
+````
+```cpp
 /* USER CODE END 2 */
 HAL_CAN_Start(&hcan1)；
-```
+````
 
 这里需要注意，CubeMX 生成了 CAN 初始化函数，不代表 CAN 外设已经开始工作。`MX_CAN1_Init()` 只是完成了基础配置，而 `HAL_CAN_Start(&hcan1)` 才是真正让 CAN 外设进入工作状态。
 
@@ -370,7 +375,7 @@ while (1)
 
     /* USER CODE BEGIN 3 */
 }
-```
+````
 
 这样如果在CAN总线上出了什么差错都会直接进入错误中断，以便调试时检查问题。
 
