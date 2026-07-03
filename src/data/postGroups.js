@@ -3,8 +3,9 @@ export const postGroups = [
         id: 'f4-tutorial',
         title: 'F407开发板系列教程',
         description: '从这里开始学会使用你的RoboMaster入门第一块大疆C板。',
-        open: false,
+        open: true,
         posts: [
+            '1-1',
         ],
     },
     {
