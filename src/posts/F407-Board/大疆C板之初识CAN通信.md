@@ -128,11 +128,11 @@ CubeMX 中的 CAN 波特率主要由三个参数决定：
 
 经典 CAN 的波特率可以写成：
 
-$BaudRate = \frac{1}{T_{bit}}=\frac{f_{CAN_{clk}}}{Prescaler \times (1 + TSEG1 + TSEG2)}$
+$$BaudRate = \frac{1}{T_{bit}}=\frac{f_{CAN_{clk}}}{Prescaler \times (1 + TSEG1 + TSEG2)}$$
 
 在当前 168MHz 系统主频配置下，CAN1 挂载在 APB1 总线上，而 APB1 的频率一般为 42MHz。因此我们可以把公式理解为：
 
-$1000000 = \frac{42000000}{Prescaler \times (1 + TSEG1 + TSEG2)}$
+$$1000000 = \frac{42000000}{Prescaler \times (1 + TSEG1 + TSEG2)}$$
 
 也就是说，**分母整体需要等于 42**。
 
@@ -149,11 +149,11 @@ SJW       = 1
 
 此时有：
 
-$2 \times (1 + 15 + 5) = 42$
+$$2 \times (1 + 15 + 5) = 42$$
 
 最终波特率即为：
 
-$\frac{42MHz}{42}=1MHz$
+$$\frac{42MHz}{42}=1MHz$$
 
 
 
