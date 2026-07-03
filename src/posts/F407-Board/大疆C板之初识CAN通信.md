@@ -157,7 +157,7 @@ $\frac{42MHz}{42}=1MHz$
 
 
 
-## **为什么还要看采样点?**
+## 为什么还要看采样点?
 
 到这里可能会有同学觉得，只要能凑出 1Mbps 不就行了吗？为什么还要纠结 TSEG1 和 TSEG2 怎么分？
 
@@ -167,11 +167,11 @@ $\frac{42MHz}{42}=1MHz$
 
 CAN 总线上的一个 bit 并不是在整个时间段里随便读一次就行，而是会在某一个相对靠后的位置进行采样。这个采样点通常可以写成：
 
-$SP = \frac{1 + TSEG1}{1 + TSEG1 + TSEG2}$
+$$SP = \frac{1 + TSEG1}{1 + TSEG1 + TSEG2}$$
 
 如果使用上面的配置，则有：
 
-$SP = \frac{1 + 15}{1 + 15 + 5}=\frac{16}{21}≈76.19\%$
+$$SP = \frac{1 + 15}{1 + 15 + 5}=\frac{16}{21}≈76.19\%$$
 
 对于我们在队内使用的短距离电机 CAN 总线来说，这样的配置已经足够完成 M3508 的基础驱动。
 
@@ -189,7 +189,8 @@ $SP = \frac{1 + 15}{1 + 15 + 5}=\frac{16}{21}≈76.19\%$
 
 对于大疆电机协议来说，一帧控制 1\~4 号电机电流的 CAN 报文，其标准 ID 为 0x200，数据长度为 8 个字节。其中每两个字节对应一个电机电流值，顺序如下：
 
-```C++
+````md
+```cpp
 Data[0] Data[1] -> ID 1 电机电流
 Data[2] Data[3] -> ID 2 电机电流
 Data[4] Data[5] -> ID 3 电机电流
@@ -210,7 +211,8 @@ Data[6] Data[7] -> ID 4 电机电流
 
 在 F407 的经典 CAN 外设中，一次发送主要围绕三个东西展开：
 
-```C++
+````md
+```cpp
 CAN_TxHeaderTypeDef TxHeader;   // 帧头
 uint8_t TxData[8];              // 数据区
 uint32_t TxMailbox;             // 发送邮箱
@@ -230,7 +232,8 @@ uint32_t TxMailbox;             // 发送邮箱
 
 当我们刚看到先前生成的CubeMX主框架，我们需要挑选一部分“安全区”才能进行我们主要内容的编写。我们可以选择的部分比如有`main.c`中的`/* USER CODE BEGIN 0 */`中提供的空余位置。
 
-```C++
+````md
+```cpp
 /* USER CODE BEGIN 0 */
 
                             ←------写在这里！
@@ -238,7 +241,8 @@ uint32_t TxMailbox;             // 发送邮箱
 /* USER CODE END 0 */
 ```
 
-```C++
+````md
+```cpp
 HAL_StatusTypeDef CAN_Send_MotorCmd(int16_t motor1, int16_t motor2, int16_t motor3, int16_t motor4){
     //这里确定了我们想要发送的CAN帧的帧头，存储发送数据的数组以及发送所采用的邮箱名称
     CAN_TxHeaderTypeDef TxHeader;
@@ -272,7 +276,8 @@ HAL_StatusTypeDef CAN_Send_MotorCmd(int16_t motor1, int16_t motor2, int16_t moto
 
 在 `stm32f4xx_hal_def.h` 中对这一枚举类型做了定义：
 
-```C++
+````md
+```cpp
 */** *
 *  * @brief  HAL Status structures definition  *
 *  */  *
@@ -298,7 +303,8 @@ TxHeader.DLC = 8;
 
 这几行其实就确定了这帧报文的身份：
 
-```C++
+````md
+```cpp
 0x200        -> 控制 1~4 号电机
 CAN_ID_STD   -> 标准帧
 CAN_RTR_DATA -> 数据帧
@@ -309,7 +315,8 @@ DLC = 8      -> 8 字节数据
 
 以 `motor1` 为例：
 
-```C++
+````md
+```cpp
 TxData[0] = (uint8_t)(motor1 >> 8);
 TxData[1] = (uint8_t)(motor1);
 ```
@@ -318,7 +325,8 @@ TxData[1] = (uint8_t)(motor1);
 
 这一步可以理解成：
 
-```C++
+````md
+```cpp
 int16_t motor1 = 高8位 + 低8位
 TxData[0] 放高8位
 TxData[1] 放低8位
