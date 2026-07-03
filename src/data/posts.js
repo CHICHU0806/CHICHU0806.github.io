@@ -1,5 +1,17 @@
 export const posts = [
     {
+        id: '1-1',
+        title: '大疆C板之初识CAN通信',
+        date: '2026-07-03',
+        latestOrder: 1,
+        category: 'F407开发板系列教程',
+        tags: ['大疆C板', 'CAN通信', 'STM32CubeMX'],
+        summary: '本文介绍了大疆C板的CAN通信基础知识，包括时钟配置、CAN引脚配置、波特率设置以及代码层面的发送逻辑。',
+        file: 'F407-Board/大疆C板之初识CAN通信',
+        featured: false,
+        featuredOrder: 0,
+    },
+    {
         id: '2-1',
         title: '达妙MC02之FDCAN初步配置方法',
         date: '2026-06-09',
