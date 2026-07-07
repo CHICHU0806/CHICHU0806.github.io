@@ -1,5 +1,17 @@
 export const posts = [
     {
+        id: '0-2',
+        title: '一个合理的工具链配置流程',
+        date: '2026-07-07',
+        latestOrder: 1,
+        category: '',
+        tags: ['工具链', '配置', '嵌入式'],
+        summary: '本文介绍了一个合理的工具链配置流程，帮助嵌入式开发者快速搭建开发环境。',
+        file: 'Star/一个合理的工具链配置流程',
+        featured: true,
+        featuredOrder: 1,
+    },
+    {
         id: '1-1',
         title: '大疆C板之初识CAN通信',
         date: '2026-07-03',
