@@ -1529,7 +1529,7 @@ Keil本体需要收取高额费用，而使用注册机破解过程又略显繁�
 
 同样下载最新版本即可。
 
-## 配置CLion\\+STM32CubeMX工具链
+## 配置CLion+STM32CubeMX工具链
 
 打开CLion，创建新项目，并且选择嵌入式中的STM32CubeMX，确保IDE能够找到STM32CubeMX与STM32CubeCLT的位置。
 
