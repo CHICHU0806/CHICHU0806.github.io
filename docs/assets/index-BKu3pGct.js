@@ -1449,7 +1449,7 @@ Keil本体需要收取高额费用，而使用注册机破解过程又略显繁�
 
 也许大家看过诸如“付费解锁”“限时秒杀”WinRAR， VScode等软件的梗图，但是在这里我们一定要达成的共识是，本科阶段学习过程中你使用到的90%的工科软件都有免费获取的途径，因此在下文我们会引导大家怎么去下载这一内容。
 
-![image\\.png](images/posts/Star/ToolChain/iamge7.png)
+![image\\.png](images/posts/Star/ToolChain/image7.png)
 
 ## 注册重庆大学学生邮箱
 
@@ -1457,11 +1457,11 @@ Keil本体需要收取高额费用，而使用注册机破解过程又略显繁�
 
 首先，我们需要访问重庆大学网上服务大厅：https://i\\.cqu\\.edu\\.cn/index\\.html\\#/，并且使用我们的统一身份认证进入该网站。需要注意的是，如果你从该文档的链接直接选择跳转，由于没有经过统一身份认证，你会遇到406的错误，这表示后端返回的结果前端无法解析，只需要将\`i\`\`ndex.html#/\`这部分内容手动删去再次访问即可。
 
-![image\\.png](图片和附件/image%203.png)
+![image\\.png](images/posts/Star/ToolChain/image3.png)
 
 成功进入后，点击上图中箭头所指示的电子邮箱申请，跳转到Widedu代理的邮箱申请网站并且选择新增邮箱申请。
 
-![image\\.png](图片和附件/image%2017.png)
+![image\\.png](images/posts/Star/ToolChain/image17.png)
 
 按照要求填写相关信息后等待邮箱下发，这一过程大概会等待1\\~2天的时间。
 
@@ -1469,23 +1469,23 @@ Keil本体需要收取高额费用，而使用注册机破解过程又略显繁�
 
 搜索JetBrains，或者直接访问https://www\\.jetbrains\\.com/zh\\-cn/，在右上角选择你最常用的登录方式，在这里个人推荐email≈Google\\>GitHub。
 
-![image\\.png](图片和附件/image%2020.png)
+![image\\.png](images/posts/Star/ToolChain/image20.png)
 
 接下来，我们在上方找到“教育”→“面向学生的免费许可证”
 
-![image\\.png](图片和附件/image%201.png)
+![image\\.png](images/posts/Star/ToolChain/image1.png)
 
 点击下图的“此处”进入引导流程：
 
-![image\\.png](图片和附件/image%2012.png)
+![image\\.png](images/posts/Star/ToolChain/image12.png)
 
 最后点击“教育授权申请”跳转到申请界面按照要求填写相关信息即可。
 
-![image\\.png](图片和附件/image%208.png)
+![image\\.png](images/posts/Star/ToolChain/image8.png)
 
 通过这一步骤成功申请到教育许可证后，我们可以在个人界面看到如下信息：
 
-![image\\.png](图片和附件/image%2014.png)
+![image\\.png](images/posts/Star/ToolChain/image14.png)
 
 与此同时我们也可以并行下载CLion，一般来说我们使用的都是面向个人的免费版本，这一版本在实际功能上存在一定的阉割，因此直接点击右下角便可导入我们刚才申请的教育许可证，享受完整的IDE内容。
 
@@ -1495,17 +1495,17 @@ Keil本体需要收取高额费用，而使用注册机破解过程又略显繁�
 
 现在上方“工具与软件”栏中找到“开发工具”\\-\\-\\>“软件开发工具”\\-\\-\\>“STM32软件开发工具”，
 
-![image\\.png](图片和附件/image.png)
+![image\\.png](images/posts/Star/ToolChain/image.png)
 
 然后在这里“按名称或描述检索工具与软件”进行我们的下一步资源收集工作。
 
-![image\\.png](图片和附件/image%2016.png)
+![image\\.png](images/posts/Star/ToolChain/image16.png)
 
 ### STM32CubeMX
 
 首先是我们进行芯片配置的最直接软件
 
-![image\\.png](图片和附件/image%205.png)
+![image\\.png](images/posts/Star/ToolChain/image5.png)
 
 这里我们需要选择下载的版本为6\\.14\\.1，因为自6\\.15\\.0起，存在Arm架构与x86编译过程中的一些冲突未能解决，不能适配我们CLion中使用CMakeList的指导编译方式。
 
@@ -1525,7 +1525,7 @@ Keil本体需要收取高额费用，而使用注册机破解过程又略显繁�
 
 这是STM32系列工具包，主要用于环境配置，它的位置与上述三者稍有不同：
 
-![image\\.png](图片和附件/image%206.png)
+![image\\.png](images/posts/Star/ToolChain/image6.png)
 
 同样下载最新版本即可。
 
@@ -1533,45 +1533,45 @@ Keil本体需要收取高额费用，而使用注册机破解过程又略显繁�
 
 打开CLion，创建新项目，并且选择嵌入式中的STM32CubeMX，确保IDE能够找到STM32CubeMX与STM32CubeCLT的位置。
 
-![image\\.png](图片和附件/image%202.png)
+![image\\.png](images/posts/Star/ToolChain/image2.png)
 
 此处我们以STM32CubeMX中的STM32F103C8T6为例，在“ACCESS TO MCU SELECTOR”
 
-![image\\.png](图片和附件/image%2019.png)
+![image\\.png](images/posts/Star/ToolChain/image19.png)
 
-![image\\.png](图片和附件/image%2013.png)
+![image\\.png](images/posts/Star/ToolChain/image7.png)
 
 稍后进入如下界面后，选择上方栏目中的“Project Manager”。
 
-![image\\.png](图片和附件/image%209.png)
+![image\\.png](images/posts/Star/ToolChain/image9.png)
 
 修改Project Name，并且修改好对应的Project Location，并且改动Toolchain/IDE为CMake
 
-![image\\.png](图片和附件/image%2018.png)
+![image\\.png](images/posts/Star/ToolChain/image18.png)
 
 到这一步，我们不用去管任何额外的STM32CubeMX设置，直接点击右上角的GENERATE CODE即可。现在，我们要做的只是验证CLion\\+STM32CubeMX这条工具链的可行性。
 
 跳出生成完毕提示框后，不必Open Folder，直接取消，然后回到CLion，填入我们刚才填写的路径。
 
-![image\\.png](图片和附件/image%2010.png)
+![image\\.png](images/posts/Star/ToolChain/image10.png)
 
 只要条件完全满足，右下角的继续就会亮起，然后就进入到我们的CLion配置阶段：
 
-![image\\.png](图片和附件/image%2021.png)
+![image\\.png](images/posts/Star/ToolChain/image21.png)
 
-![image\\.png](图片和附件/image%2015.png)
+![image\\.png](images/posts/Star/ToolChain/image15.png)
 
 关于图中STM32这条工具链的切换，就需要我们点击右侧的“管理工具链\\.\\.\\.”，这时就要请出我们的STM32CubeCLT了，左侧加号添加系统工具链，然后按照右侧同样的内容改动即可。
 
-![image\\.png](图片和附件/image%2011.png)
+![image\\.png](images/posts/Star/ToolChain/image11.png)
 
 完成了如上步骤后，点击确定/应用，CLion会自动进行CMakeList自检，如果通过，在上方会显示编译相关的图标：
 
-![image\\.png](图片和附件/image%2022.png)
+![image\\.png](images/posts/Star/ToolChain/image22.png)
 
 这就代表着我们的CMake已经配置完毕，同时你也可以点击小锤子图标来进行编译测试，若无问题，一般呈现为“构建已完成”。
 
-![image\\.png](图片和附件/image%204.png)
+![image\\.png](images/posts/Star/ToolChain/image4.png)
 
 至此，我们就已经完成了基础的配置。
 
